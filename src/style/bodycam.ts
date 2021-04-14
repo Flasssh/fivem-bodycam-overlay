@@ -4,7 +4,6 @@ type DotProps = {
     isEnable: boolean;
 }
 
-
 // Pulse Rec
 const pulseRec = keyframes`
     0% {
@@ -21,22 +20,27 @@ const pulseRec = keyframes`
 const RecDot = styled.div<DotProps>`
     background: ${({isEnable}) => ( isEnable ? "rgb(192, 0, 0)" : "black")};
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
     animation: ${pulseRec} 2s infinite ease-in-out;
-    margin: 14px 3px 0 3px;
+    margin: 2px 4px 0 4px;
 `;
 
 // BodyCamBack
+type BodyBackProps = {
+    opacity: number;
+    width: number;
+}
 
-const BodyCamBack = styled.div`
-    background: rgba(0,0,0,0.9);
+const BodyCamBack = styled.div<BodyBackProps>`
+    background: rgba(0,0,0,${({opacity}) => opacity});
     border-radius: 4px;
     padding: 5px;
     color: white;
     font-family: 'Arial';
+    font-size: 12px;
     font-weight: bold;
-    width: 350px;
+    width: ${({width})=> width}px;
 `;
 
 // StatucBodyCam 
@@ -44,9 +48,10 @@ const StatuBodyCam = styled.div`
     display: flex;
 `;
 
-// BodyCamText
-const BodyCamText = styled.div`
-
+// BodyText
+const BodyText = styled.p`
+    line-height: 16px;
+    margin: 0
 `;
 
-export { RecDot, BodyCamBack, StatuBodyCam};
+export { RecDot, BodyCamBack, StatuBodyCam, BodyText };

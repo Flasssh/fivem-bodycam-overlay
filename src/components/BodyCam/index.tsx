@@ -1,20 +1,24 @@
 import React, { ReactChild, ReactChildren, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { BodyCamBack, RecDot, StatuBodyCam} from '../../style/bodycam';
+import { BodyCamBack, RecDot, StatuBodyCam, BodyText} from '../../style/bodycam';
 
 interface Props {
     children: ReactChild | ReactChildren;
+    // Boolean
     recStatus: boolean;
+    agentMatricule:boolean;
+    weeksDay: boolean;
+    // String
     brandName: string;
     agentName: string;
-    agentMatricule:boolean;
-    agentGrade: string | number;
     policeDepartement: string;
-    fullDaySys: boolean;
-    weeksDay: boolean;
+    agentGrade: string | number;
+    // Number
+    opacity: number;
+    width: number;
 }
 
-export function BodyCam({recStatus, fullDaySys, weeksDay, brandName, agentName, agentMatricule, agentGrade, policeDepartement}: Props) {
+export function BodyCam({recStatus, width, opacity, weeksDay, brandName, agentName, agentMatricule, agentGrade, policeDepartement}: Props) {
     const locale = 'en';
     const [today, setDate] = useState(new Date());
 
@@ -28,7 +32,7 @@ export function BodyCam({recStatus, fullDaySys, weeksDay, brandName, agentName, 
     }, []);
 
     const day = today.toLocaleDateString(locale, { weekday: 'long' });
-    const date = `${today.getDate()} ${today.toLocaleDateString(locale, { month: 'long' })}\n\n`;
+    const date = `${today.getDate()} ${today.toLocaleDateString(locale, { month: 'long' })}`;
     if (weeksDay) {
         const date = `${day}, ${today.getDate()} ${today.toLocaleDateString(locale, { month: 'long' })}`;
     }
@@ -37,15 +41,15 @@ export function BodyCam({recStatus, fullDaySys, weeksDay, brandName, agentName, 
 
     return (
       <div>
-            <BodyCamBack>
+            <BodyCamBack width={width} opacity={opacity}>
                 <StatuBodyCam>
-                    <p>REC</p>
+                    <BodyText>REC</BodyText>
                     <RecDot isEnable={recStatus} />
-                    <p>{brandName} BODY CAM</p>
+                    <BodyText>{brandName} BODY CAM</BodyText>
                 </StatuBodyCam>
-                <p>{agentGrade} [{agentMatricule}] {agentName}</p>
-                <p>{agentName}</p>
-                <p>{date} {year} {time}</p>
+                <BodyText>{agentGrade} [{agentMatricule}] {agentName}</BodyText>
+                <BodyText>{agentName}</BodyText>
+                <BodyText>{date} {year} {time}</BodyText>
             </BodyCamBack>
       </div>
   );
