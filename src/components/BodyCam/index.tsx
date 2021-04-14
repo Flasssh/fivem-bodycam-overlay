@@ -6,7 +6,6 @@ interface Props {
     children: ReactChild | ReactChildren;
     // Boolean
     recStatus: boolean;
-    agentMatricule:boolean;
     weeksDay: boolean;
     // String
     brandName: string;
@@ -14,6 +13,7 @@ interface Props {
     policeDepartement: string;
     agentGrade: string | number;
     // Number
+    agentMatricule: number;
     opacity: number;
     width: number;
 }
