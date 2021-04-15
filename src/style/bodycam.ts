@@ -40,7 +40,8 @@ const BodyCamBack = styled.div<BodyBackProps>`
     font-family: 'Arial';
     font-size: 12px;
     font-weight: bold;
-    width: ${({width})=> width}px;
+    width: ${({ width }) => width}px;
+    max-width: 300px
 `;
 
 // StatucBodyCam 
