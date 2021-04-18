@@ -1,13 +1,20 @@
+import './style/tailwind/tailwind.output.css';
+
 import React from 'react';
+
 import { BodyCam } from './components/BodyCam';
-import { BodyCamCreator } from './components/BodyCamCreator';
+
+// https://github.com/zhivotnoya/XION-ChaseCam
 
 function App() {
   return (
     <div>
-      <BodyCamCreator>
-        <BodyCam recStatus={true} width={180} opacity={0.8} hourTwelve={true} weeksDay={true} brandName={"COIL"} agentName={"Mickael Smith"} agentMatricule={100} agentGrade={"Rookie"} policeDepartement={"Los Sant5ons Police Departement"}/>
-      </BodyCamCreator>
+      <BodyCam
+        name={'Mickael Smith'}
+        matricule={100}
+        departement={'los santos police departement'}
+        cameraBrand={'COIL BODY CAM'}
+      />
     </div>
   );
 }

@@ -1,55 +1,77 @@
+import '../../style/bodycam.scss';
+
 import React, { useEffect, useState } from 'react';
-import { BodyCamBack, RecDot, StatuBodyCam, BodyText} from '../../style/bodycam';
+import styled from 'styled-components';
 
 interface Props {
-    // Boolean
-    recStatus: boolean;
-    weeksDay: boolean;
-    hourTwelve: boolean;
-    // String
-    brandName: string;
-    agentName: string;
-    policeDepartement: string;
-    agentGrade: string | number;
-    // Number
-    agentMatricule: number;
-    opacity: number;
-    width: number;
+  name: string;
+  matricule: number;
+  departement: string;
+  cameraBrand: string;
 }
 
-export function BodyCam({recStatus, hourTwelve, width, opacity, weeksDay, brandName, agentName, agentMatricule, agentGrade, policeDepartement}: Props) {
-    const locale = 'en';
-    const [today, setDate] = useState(new Date());
+type CamUiType = {
+  float: string;
+  textAlign: string;
+};
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setDate(new Date());
-        }, 1000);
-        return () => {
-            clearInterval(timer);
-        }
-    }, []);
+const CamUi = styled.div<CamUiType>`
+  float: ${(props) => props.float};
+  width: auto;
+  text-align: ${(props) => props.textAlign};
+  margin: 10px;
+`;
 
-    const day = today.toLocaleDateString(locale, { weekday: 'long' });
-    const date = `${today.getDate()} ${today.toLocaleDateString(locale, { month: 'long' })}`;
-    if (weeksDay) {
-        const date = `${day}, ${today.getDate()} ${today.toLocaleDateString(locale, { month: 'long' })}`;
-    }
-    const time = today.toLocaleTimeString(locale, { hour: 'numeric', hour12: hourTwelve, minute: 'numeric' });
-    const year = today.getFullYear();
+export function BodyCam({ name, matricule, departement, cameraBrand }: Props) {
+  const [date, setDate] = useState(new Date());
 
-    return (
-      <div>
-            <BodyCamBack width={width} opacity={opacity}>
-                <StatuBodyCam>
-                    <BodyText>REC</BodyText>
-                    <RecDot isEnable={recStatus} />
-                    <BodyText>{brandName} BODY CAM</BodyText>
-                </StatuBodyCam>
-                <BodyText>{agentGrade} [{agentMatricule}] {agentName}</BodyText>
-                <BodyText>{agentName}</BodyText>
-                <BodyText>{date} {year} {time}</BodyText>
-            </BodyCamBack>
-      </div>
+  let playerName = name.toUpperCase() || 'undefined';
+  let playerMatricule = matricule || 'undefined';
+  let playerDepartement = departement.toUpperCase() || 'LOS SANTOS POLICE DEPARTEMENT';
+
+  let monthNames = [
+    'JAN',
+    'FEB',
+    'MAR',
+    'APR',
+    'MAY',
+    'JUN',
+    'JUL',
+    'AUG',
+    'SEP',
+    'OCT',
+    'NOV',
+    'DEC',
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  let currentTime = `${date.getDate()} ${
+    monthNames[date.getMonth()]
+  } ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+
+  return (
+    <div>
+      <CamUi float="right" textAlign="right">
+        <div className="bg-black	opacity-40 rounded p-1">
+          <div className="blink-group">
+            REC <div className="blink-circle blink-rec"></div>
+            {cameraBrand}
+          </div>
+          <div>
+            {playerName} [{playerMatricule}]
+          </div>
+          <div>{playerDepartement}</div>
+          <div>{currentTime}</div>
+        </div>
+      </CamUi>
+    </div>
   );
 }
