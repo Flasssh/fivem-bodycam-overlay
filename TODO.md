@@ -1,10 +1,7 @@
 # TODO LIST:
 
-- Pouvoir activer un mode Light et un DarkMod
 - Pouvoir changer la taille du texte et de l'hud
 - Pouvoir changer les couleurs
-- Pouvoir changer le système d'heure 24/12
-- Pouvoir changer les textes
 - Pouvoir importer une image pour pouvoir voir comment cela rends
 - Bien optimiser pour OBS
 - Essayer de voir si je peux faire télécharger une préconfiguration de OBS

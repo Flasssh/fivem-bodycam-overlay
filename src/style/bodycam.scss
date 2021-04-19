@@ -7,10 +7,6 @@ body {
     color: #AFAFAF;
 }
 
-.blink-rec {
-    animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;
-}
-
 .blink-circle{
     background-color: rgb(196, 13, 13);
     border-radius: 50%;
@@ -18,6 +14,16 @@ body {
     height: 10px;
     margin: 5px 3px 0 3px
 }
+
+.blink-rec {
+    animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+}
+
+.no-blink-rec{
+    background-color: rgb(99, 13, 13);
+    opacity: 0.3;
+}
+
 
 .blink-group{
     display: inline-flex;

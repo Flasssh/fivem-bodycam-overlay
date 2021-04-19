@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
 
-export function BodyCamConfigurator() {
-  const [brandCamera, setBrandName] = useState('');
-  const [policeName, setPoliceName] = useState('');
-  const [policeDepartement, setPoliceDepartement] = useState('');
-  const [policerMatricule, setPolicerMatricule] = useState(100);
+import { BodyCam } from '../BodyCam';
 
-  const [darkMode, setDarkMode] = useState(true);
+export function BodyCamConfigurator() {
+  const [brandCamera, setBrandName] = useState('COIL BODY');
+  const [policeName, setPoliceName] = useState('Mickeal Smith');
+  const [policeDepartement, setPoliceDepartement] = useState(
+    'LOS SANTOS POLICE DEPARTEMENT',
+  );
+  const [policerMatricule, setPolicerMatricule] = useState(100);
+  const [fullCaps, setFullCaps] = useState(true);
+
   const [dashCamStatus, setDashCamStatus] = useState(true);
   const [twelveHoursSys, setTwelveHoursSys] = useState(false);
 
-  let link = `http://localhost:3000/overlay/cameraBrand=${brandCamera}&policeName=${policeName}&policeDepartement=${policeDepartement}&policeNumner=${policerMatricule}&darkMode=${darkMode}&dashcamstatus=${dashCamStatus}&twelvehours=${twelveHoursSys}`;
+  let link = `http://localhost:3000/overlay/cameraBrand=${brandCamera}&policeName=${policeName}&policeDepartement=${policeDepartement}&policeNumner=${policerMatricule}&dashcamstatus=${dashCamStatus}&twelvehours=${twelveHoursSys}`;
 
   return (
     <div>
+      <div className="bodyCamPreviewer" data-tip="Preview">
+        <BodyCam
+          name={policeName}
+          matricule={policerMatricule}
+          departement={policeDepartement}
+          cameraBrand={brandCamera}
+          isActivated={dashCamStatus}
+          fullCaps={fullCaps}
+          twelveHoursSys={twelveHoursSys}
+        />
+      </div>
       <div className="bodyCamConfigurator mt-6 grid-configurator">
         <div className="configurator1">
           <input
@@ -55,15 +70,6 @@ export function BodyCamConfigurator() {
           />
         </div>
         <div className="configurator5">
-          <div data-tip="DarkMode pour la dashcam">
-            <input
-              type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 cursor-pointer	"
-              defaultChecked={darkMode}
-              onChange={() => setDarkMode(!darkMode)}
-            />
-            <span className="ml-2 text-blueGray-600">DarkMode</span>
-          </div>
           <div>
             <input
               type="checkbox"
@@ -81,6 +87,15 @@ export function BodyCamConfigurator() {
               onChange={() => setTwelveHoursSys(!twelveHoursSys)}
             />
             <span className="ml-2 text-blueGray-600">12H System</span>
+          </div>
+          <div data-tip="Si vous activez cette fonctionnalité, tous les textes seront systématiquement en majuscule.">
+            <input
+              type="checkbox"
+              className="form-checkbox h-5 w-5 text-gray-600 cursor-pointer"
+              defaultChecked={fullCaps}
+              onChange={() => setFullCaps(!fullCaps)}
+            />
+            <span className="ml-2 text-blueGray-600">Full Caps</span>
           </div>
         </div>
         <div
