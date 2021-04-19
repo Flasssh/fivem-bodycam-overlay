@@ -14,7 +14,7 @@ export function BodyCamConfigurator() {
   const [dashCamStatus, setDashCamStatus] = useState(true);
   const [twelveHoursSys, setTwelveHoursSys] = useState(false);
 
-  let link = `http://localhost:3000/overlay/cameraBrand=${brandCamera}&policeName=${policeName}&policeDepartement=${policeDepartement}&policeNumner=${policerMatricule}&dashcamstatus=${dashCamStatus}&twelvehours=${twelveHoursSys}`;
+  let link = `http://localhost:3000/overlay/?cameraBrand=${brandCamera}&policeName=${policeName}&policeDepartement=${policeDepartement}&policeNumber=${policerMatricule}&dashcamstatus=${dashCamStatus}&twelvehours=${twelveHoursSys}&fullcaps=${fullCaps}`;
 
   return (
     <div>

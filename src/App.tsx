@@ -2,20 +2,19 @@ import './style/tailwind/tailwind.output.css';
 import './style/main.scss';
 
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { BodyCamConfigurator } from './components/BodyCamConfigurator';
-import { Footer } from './components/Footer/Footer';
+import { Home } from './page/Home';
+import { Overlay } from './page/Overlay';
 
 function App() {
   return (
-    <div>
-      <div className="container mx-auto mt-10">
-        <BodyCamConfigurator />
-      </div>
-      <Footer />
-      <ReactTooltip />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/overlay" exact={false} component={Overlay} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
