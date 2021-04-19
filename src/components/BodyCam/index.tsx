@@ -8,6 +8,7 @@ interface Props {
   matricule: number;
   departement: string;
   cameraBrand: string;
+  lightMode: boolean;
 }
 
 type CamUiType = {
@@ -22,8 +23,12 @@ const CamUi = styled.div<CamUiType>`
   margin: 10px;
 `;
 
-export function BodyCam({ name, matricule, departement, cameraBrand }: Props) {
-  const [date, setDate] = useState(new Date());
+// https://github.com/zhivotnoya/XION-ChaseCam
+
+export function BodyCam({ name, matricule, departement, cameraBrand, lightMode }: Props) {
+  const [now, setDate] = useState(new Date());
+
+  console.log('LighMode: ' + lightMode);
 
   let playerName = name.toUpperCase() || 'undefined';
   let playerMatricule = matricule || 'undefined';
@@ -53,9 +58,17 @@ export function BodyCam({ name, matricule, departement, cameraBrand }: Props) {
     };
   }, []);
 
-  let currentTime = `${date.getDate()} ${
-    monthNames[date.getMonth()]
-  } ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  // Date
+  let date = now.getDate();
+  let month = now.getMonth();
+  let year = now.getFullYear();
+
+  // Time
+  let hours = now.getHours() < 10 ? `0${now.getHours()}` : now.getHours();
+  let minutes = now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
+  let seconds = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
+
+  let currentTime = `${date} ${monthNames[month]} ${year} ${hours}:${minutes}:${seconds}`;
 
   return (
     <div>
