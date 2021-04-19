@@ -6,6 +6,7 @@ import ReactTooltip from 'react-tooltip';
 
 import { BodyCam } from './components/BodyCam';
 import { BodyCamConfigurator } from './components/BodyCamConfigurator';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         </div>
         <BodyCamConfigurator />
       </div>
+      <Footer />
       <ReactTooltip />
     </div>
   );
