@@ -1,14 +1,62 @@
-.container{
+.container {
     min-width: 640px;
     width: 50%;
     margin: 0px auto;
+    margin-top: 20px !important;
 }
 
-.bodyCamPreviewer{
+.bodyCamPreviewer {
     height: 360px;
     width: 640px;
-    background-color: rgba(17, 24, 39, 1);
+    background-color: #fff;
     border: 2px solid rgba(107, 114, 128, 1);
     border-radius: 6px;
 }
 
+.bodyCamConfigurator>div {
+    margin-top: 10px;
+}
+
+.grid-configurator {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.configurator1 {
+    grid-area: 1 / 2 / 2 / 6;
+}
+
+.configurator2 {
+    grid-area: 2 / 2 / 3 / 6;
+}
+
+.configurator3 {
+    grid-area: 3 / 2 / 4 / 6;
+}
+
+.configurator4 {
+    grid-area: 4 / 2 / 5 / 6;
+}
+
+.configurator5 {
+    grid-area: 1 / 1 / 5 / 2;
+}
+
+.configurator5>div {
+    margin-top: 6px;
+    display: flex;
+}
+
+.configurator6 {
+    grid-area: 5 / 1 / 6 / 6;
+}
+
+.configurator6 > a{
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
