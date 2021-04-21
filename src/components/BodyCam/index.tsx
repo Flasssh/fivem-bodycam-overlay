@@ -1,5 +1,6 @@
 import '../../style/bodycam.scss';
 
+import faker from 'faker';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -25,7 +26,11 @@ const CamUi = styled.div<CamUiType>`
   margin: 10px;
 `;
 
-// https://github.com/zhivotnoya/XION-ChaseCam
+let defaultName: string = faker.name.findName();
+let defaultMatricule: number = faker.random.number({
+  min: 1,
+  max: 999,
+});
 
 export function BodyCam({
   name,
@@ -40,16 +45,16 @@ export function BodyCam({
 
   let brandDashCam;
   let playerName;
-  let playerMatricule = matricule || 1;
+  let playerMatricule = matricule || defaultMatricule;
   let playerDepartement;
 
   if (fullCaps) {
-    brandDashCam = cameraBrand.toUpperCase() || 'undefined';
-    playerName = name.toUpperCase() || 'undefined';
+    brandDashCam = cameraBrand.toUpperCase() || 'COIL BODY';
+    playerName = name.toUpperCase() || defaultName.toUpperCase();
     playerDepartement = departement.toUpperCase() || 'LOS SANTOS POLICE DEPARTEMENT';
   } else {
     brandDashCam = cameraBrand || 'undefined';
-    playerName = name || 'undefined';
+    playerName = name || defaultName;
     playerDepartement = departement || 'LOS SANTOS POLICE DEPARTEMENT';
   }
 

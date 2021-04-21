@@ -7,21 +7,42 @@ interface Props {
   location: any;
 }
 
+interface parsedQuery {
+  cameraBrand: string;
+  dashcamstatus: boolean;
+  fullcaps: boolean;
+  policeDepartement: string;
+  policeName: string;
+  policeNumber: number;
+  twelvehours: boolean;
+}
+
 export function Overlay({ location }: Props) {
-  let parsed = queryString.parse(location.search);
-  // TODO: FIX PROBLEME DE TYPE
-  console.log(parsed);
+  let parsed = queryString.parse(location.search, {
+    parseBooleans: true,
+    parseNumbers: true,
+  });
+
+  let {
+    cameraBrand,
+    dashcamstatus,
+    fullcaps,
+    policeDepartement,
+    policeName,
+    policeNumber,
+    twelvehours,
+  }: parsedQuery = parsed;
 
   return (
     <div>
       <BodyCam
-        name={parsed.policeName}
-        matricule={parsed.policeNumber}
-        departement={parsed.policeDepartement}
-        cameraBrand={parsed.cameraBrand}
-        isActivated={parsed.dashcamstatus}
-        fullCaps={parsed.fullcaps}
-        twelveHoursSys={parsed.twelvehours}
+        name={policeName}
+        matricule={policeNumber}
+        departement={policeDepartement}
+        cameraBrand={cameraBrand}
+        isActivated={dashcamstatus}
+        fullCaps={fullcaps}
+        twelveHoursSys={twelvehours}
       />
     </div>
   );
