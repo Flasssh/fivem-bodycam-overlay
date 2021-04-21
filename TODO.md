@@ -14,4 +14,3 @@
 ## Langue
 
 - Pour que ce sois accessible au plus de personne possible essayer de pouvoir détecter la langue et de pouvoir changer le texte avec cette options.
- 

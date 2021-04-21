@@ -27,7 +27,7 @@ const CamUi = styled.div<CamUiType>`
 `;
 
 let defaultName: string = faker.name.findName();
-let defaultMatricule: number = faker.random.number({
+let defaultMatricule: number = faker.datatype.number({
   min: 1,
   max: 999,
 });
@@ -53,9 +53,9 @@ export function BodyCam({
     playerName = name.toUpperCase() || defaultName.toUpperCase();
     playerDepartement = departement.toUpperCase() || 'LOS SANTOS POLICE DEPARTEMENT';
   } else {
-    brandDashCam = cameraBrand || 'undefined';
+    brandDashCam = cameraBrand || 'COIL BODY';
     playerName = name || defaultName;
-    playerDepartement = departement || 'LOS SANTOS POLICE DEPARTEMENT';
+    playerDepartement = departement || 'Los Santos Police Departement';
   }
 
   let monthNames = [
