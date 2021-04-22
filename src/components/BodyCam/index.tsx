@@ -49,11 +49,11 @@ export function BodyCam({
   let playerDepartement;
 
   if (fullCaps) {
-    brandDashCam = cameraBrand.toUpperCase() || 'COIL BODY';
+    brandDashCam = cameraBrand.toUpperCase() || 'FIVEMBRAND';
     playerName = name.toUpperCase() || defaultName.toUpperCase();
     playerDepartement = departement.toUpperCase() || 'LOS SANTOS POLICE DEPARTEMENT';
   } else {
-    brandDashCam = cameraBrand || 'COIL BODY';
+    brandDashCam = cameraBrand || 'FIVEMBRAND';
     playerName = name || defaultName;
     playerDepartement = departement || 'Los Santos Police Departement';
   }

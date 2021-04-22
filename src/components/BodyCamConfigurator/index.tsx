@@ -4,15 +4,17 @@ import { BodyCam } from '../BodyCam';
 
 export function BodyCamConfigurator() {
   const [brandCamera, setBrandName] = useState('COIL BODY');
-  const [policeName, setPoliceName] = useState('Mickeal Smith');
+  const [policeName, setPoliceName] = useState('Mickael Smith');
   const [policeDepartement, setPoliceDepartement] = useState(
     'LOS SANTOS POLICE DEPARTEMENT',
   );
   const [policerMatricule, setPolicerMatricule] = useState(100);
-  const [fullCaps, setFullCaps] = useState(true);
 
+  const [fullCaps, setFullCaps] = useState(true);
   const [dashCamStatus, setDashCamStatus] = useState(true);
   const [twelveHoursSys, setTwelveHoursSys] = useState(false);
+
+  const [groupButtonNumber, setButtonNumber] = useState(1);
 
   let link = `http://localhost:3000/overlay/?cameraBrand=${brandCamera}&policeName=${policeName}&policeDepartement=${policeDepartement}&policeNumber=${policerMatricule}&dashcamstatus=${dashCamStatus}&twelvehours=${twelveHoursSys}&fullcaps=${fullCaps}`;
 
@@ -70,6 +72,31 @@ export function BodyCamConfigurator() {
           />
         </div>
         <div className="configurator5">
+          <div className="inline-flex">
+            <button
+              onFocus={() => setButtonNumber(1)}
+              className={`${
+                groupButtonNumber === 1 ? 'active' : ''
+              } py-2 px-4 bg-emerald-500 text-white font-semibold rounded-l-lg bg-green-500 focus:bg-green-700 hover:bg-green-600 shadow-md focus:outline-none w-full`}>
+              Style #1
+            </button>
+            <button
+              onFocus={() => setButtonNumber(2)}
+              className={`${
+                groupButtonNumber === 2 ? 'active' : ''
+              } py-2 px-4 bg-emerald-500 text-white font-semibold bg-green-500 focus:bg-green-700 hover:bg-green-600 shadow-md focus:outline-none w-full`}>
+              Style #2
+            </button>
+            <button
+              onFocus={() => setButtonNumber(3)}
+              className={`${
+                groupButtonNumber === 3 ? 'active' : ''
+              } py-2 px-4 bg-emerald-500 text-white font-semibold rounded-r-lg bg-green-500 focus:bg-green-700 hover:bg-green-600 shadow-md focus:outline-none w-full`}>
+              Style #3
+            </button>
+          </div>
+        </div>
+        <div className="configurator6">
           <div>
             <input
               type="checkbox"
@@ -99,13 +126,13 @@ export function BodyCamConfigurator() {
           </div>
         </div>
         <div
-          className="configurator6"
+          className="configurator7"
           data-tip="Vous pouvez créer un lien qui vous permettra de l'afficher sur votre live.">
           <a
             target="_blank"
             onClick={() => navigator.clipboard.writeText(link)}
             href={link}
-            className="py-2 px-4 bg-emerald-500 text-white font-semibold rounded-lg bg-green-500 shadow-md focus:outline-none w-full"
+            className="py-2 px-4 bg-emerald-500 text-white font-semibold rounded-lg duration-150 bg-green-500 hover:bg-green-600 shadow-md focus:outline-none w-full"
             rel="noreferrer">
             Crée le lien.
           </a>

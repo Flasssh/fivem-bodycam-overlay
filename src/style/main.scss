@@ -1,3 +1,7 @@
+.active {
+    background-color: rgba(4, 120, 87, 1);
+}
+
 .container {
     min-width: 640px;
     width: 50%;
@@ -19,7 +23,7 @@
 .grid-configurator {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
@@ -41,7 +45,7 @@
 }
 
 .configurator5 {
-    grid-area: 1 / 1 / 5 / 2;
+    grid-area: 5 / 2 / 6 / 6;
 }
 
 .configurator5>div {
@@ -50,10 +54,14 @@
 }
 
 .configurator6 {
-    grid-area: 5 / 1 / 6 / 6;
+    grid-area: 1 / 1 / 6 / 2;
 }
 
-.configurator6 > a{
+.configurator7 {
+    grid-area: 6 / 1 / 7 / 6;
+}
+
+.configurator7>a {
     display: inline-block;
     text-align: center;
     font-weight: bold;
