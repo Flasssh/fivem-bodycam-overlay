@@ -1,8 +1,10 @@
 import '../../style/bodycam.scss';
 
 import faker from 'faker';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+
+import { Time } from '../Time/time';
 
 interface Props {
   name: string;
@@ -12,19 +14,52 @@ interface Props {
   fullCaps: boolean;
   twelveHoursSys: boolean;
   isActivated: boolean;
+  styleNumber: number;
+  emplacement: string;
+  parentCallback: any;
+  isSelected: boolean;
 }
 
 type CamUiType = {
-  float: string;
   textAlign: string;
+  horizontalPosition: string;
+  verticalPosition: string;
+  isSelected: boolean;
 };
 
 const CamUi = styled.div<CamUiType>`
-  float: ${(props) => props.float};
+  opacity: ${({ isSelected }) => (isSelected ? '1' : '0.5')};
+  ${({ isSelected }) => (isSelected ? 'cursor: auto;' : 'cursor: pointer;')}
+  ${({ verticalPosition }) => (isBottom(verticalPosition) ? 'bottom: 0;' : 'top: 0;')}
+  ${({ horizontalPosition }) => (isRight(horizontalPosition) ? 'right: 0;' : 'left: 0;')}
+  text-align: ${({ textAlign }) => textAlign};
   width: auto;
-  text-align: ${(props) => props.textAlign};
+  transition: 0.3s;
   margin: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
+
+  &:hover {
+    opacity: 1;
+  }
 `;
+
+function isBottom(position: string) {
+  if (position === 'bottom') {
+    return true;
+  }
+  return false;
+}
+
+function isRight(position: string) {
+  if (position === 'right') {
+    return true;
+  }
+  return false;
+}
 
 let defaultName: string = faker.name.findName();
 let defaultMatricule: number = faker.datatype.number({
@@ -40,9 +75,11 @@ export function BodyCam({
   isActivated,
   fullCaps,
   twelveHoursSys,
+  styleNumber,
+  emplacement,
+  parentCallback,
+  isSelected,
 }: Props) {
-  const [now, setDate] = useState(new Date());
-
   let brandDashCam;
   let playerName;
   let playerMatricule = matricule || defaultMatricule;
@@ -58,53 +95,41 @@ export function BodyCam({
     playerDepartement = departement || 'Los Santos Police Departement';
   }
 
-  let monthNames = [
-    'JAN',
-    'FEB',
-    'MAR',
-    'APR',
-    'MAY',
-    'JUN',
-    'JUL',
-    'AUG',
-    'SEP',
-    'OCT',
-    'NOV',
-    'DEC',
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDate(new Date());
-    }, 1000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  // Date
-  let date = now.getDate();
-  let month = now.getMonth();
-  let year = now.getFullYear();
-
-  // Time
-  let hours = now.getHours() < 10 ? `0${now.getHours()}` : now.getHours();
-  let minutes = now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
-  let seconds = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
-
-  let currentTime;
-  if (twelveHoursSys) {
-    let aMpM = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    currentTime = `${date} ${monthNames[month]} ${year} ${hours}:${minutes}:${seconds} ${aMpM}`;
-  } else {
-    currentTime = `${date} ${monthNames[month]} ${year} ${hours}:${minutes}:${seconds}`;
+  if (styleNumber > 3 || styleNumber < 1) {
+    styleNumber = 1;
   }
+
+  if (!isEmplacementValid(emplacement)) {
+    emplacement = 'top-left';
+  }
+
+  function isEmplacementValid(position: string) {
+    let validList = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+
+    for (let i = 0; i < validList.length; i++) {
+      if (position != validList[i]) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  let verticalPosition = emplacement.split('-')[0];
+  let horizontalPosition = emplacement.split('-')[1];
+
+  const handleClick = () => {
+    parentCallback(emplacement);
+  };
 
   return (
     <div>
-      <CamUi float="right" textAlign="right">
+      <CamUi
+        onClick={handleClick}
+        horizontalPosition={horizontalPosition}
+        verticalPosition={verticalPosition}
+        isSelected={isSelected}
+        textAlign="right">
         <div className="bg-black	opacity-40 rounded p-1">
           <div className="blink-group">
             REC
@@ -116,7 +141,7 @@ export function BodyCam({
             {playerName} [{playerMatricule}]
           </div>
           <div>{playerDepartement}</div>
-          <div>{currentTime}</div>
+          <Time twelveHoursSys={twelveHoursSys} />
         </div>
       </CamUi>
     </div>

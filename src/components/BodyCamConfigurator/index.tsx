@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-import { BodyCam } from '../BodyCam';
+import { BodyCamEmplacement } from '../BodyCamEmplacement';
 
 export function BodyCamConfigurator() {
+  const [position, setPosition] = useState('top-right');
   const [brandCamera, setBrandName] = useState('COIL BODY');
   const [policeName, setPoliceName] = useState('Mickael Smith');
   const [policeDepartement, setPoliceDepartement] = useState(
@@ -16,12 +17,16 @@ export function BodyCamConfigurator() {
 
   const [groupButtonNumber, setButtonNumber] = useState(1);
 
-  let link = `http://localhost:3000/overlay/?cameraBrand=${brandCamera}&policeName=${policeName}&policeDepartement=${policeDepartement}&policeNumber=${policerMatricule}&dashcamstatus=${dashCamStatus}&twelvehours=${twelveHoursSys}&fullcaps=${fullCaps}`;
+  let link = `http://localhost:3000/overlay/?p1=${position}&p2=${brandCamera}&p3=${policeName}&p4=${policeDepartement}&p5=${policerMatricule}&p6=${fullCaps}&p7=${dashCamStatus}&p8=${twelveHoursSys}&p9=${groupButtonNumber}`;
+
+  const parentCallBackConfigurator = (data: string) => {
+    setPosition(data);
+  };
 
   return (
     <div>
-      <div className="bodyCamPreviewer" data-tip="Preview">
-        <BodyCam
+      <div className="bodyCamPreviewer">
+        <BodyCamEmplacement
           name={policeName}
           matricule={policerMatricule}
           departement={policeDepartement}
@@ -29,6 +34,8 @@ export function BodyCamConfigurator() {
           isActivated={dashCamStatus}
           fullCaps={fullCaps}
           twelveHoursSys={twelveHoursSys}
+          styleNumber={groupButtonNumber}
+          parentCallBackConfigurator={parentCallBackConfigurator}
         />
       </div>
       <div className="bodyCamConfigurator mt-6 grid-configurator">
@@ -97,7 +104,7 @@ export function BodyCamConfigurator() {
           </div>
         </div>
         <div className="configurator6">
-          <div>
+          <div className="flex">
             <input
               type="checkbox"
               className="form-checkbox h-5 w-5 text-gray-600 cursor-pointer	"
@@ -106,7 +113,7 @@ export function BodyCamConfigurator() {
             />
             <span className="ml-2 text-blueGray-600">DashCam On</span>
           </div>
-          <div>
+          <div className="flex">
             <input
               type="checkbox"
               className="form-checkbox h-5 w-5 text-gray-600 cursor-pointer"
@@ -115,7 +122,9 @@ export function BodyCamConfigurator() {
             />
             <span className="ml-2 text-blueGray-600">12H System</span>
           </div>
-          <div data-tip="Si vous activez cette fonctionnalité, tous les textes seront systématiquement en majuscule.">
+          <div
+            className="flex"
+            data-tip="Si vous activez cette fonctionnalité, tous les textes seront systématiquement en majuscule.">
             <input
               type="checkbox"
               className="form-checkbox h-5 w-5 text-gray-600 cursor-pointer"
