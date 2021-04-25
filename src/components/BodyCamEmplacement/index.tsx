@@ -12,6 +12,7 @@ interface Props {
   twelveHoursSys: boolean;
   styleNumber: number;
   parentCallBackConfigurator: any;
+  sizeConfig: number;
 }
 
 export function BodyCamEmplacement({
@@ -24,6 +25,7 @@ export function BodyCamEmplacement({
   twelveHoursSys,
   styleNumber,
   parentCallBackConfigurator,
+  sizeConfig,
 }: Props) {
   const bodyCamCallBack = (data: string) => {
     parentCallBackConfigurator(data);
@@ -82,6 +84,7 @@ export function BodyCamEmplacement({
         emplacement={'top-left'}
         parentCallback={bodyCamCallBack}
         isSelected={bodyCamVisibility1}
+        sizeHud={sizeConfig}
       />
       <BodyCam
         name={name}
@@ -95,6 +98,7 @@ export function BodyCamEmplacement({
         emplacement={'top-right'}
         parentCallback={bodyCamCallBack}
         isSelected={bodyCamVisibility2}
+        sizeHud={sizeConfig}
       />
       <BodyCam
         name={name}
@@ -108,6 +112,7 @@ export function BodyCamEmplacement({
         emplacement={'bottom-left'}
         parentCallback={bodyCamCallBack}
         isSelected={bodyCamVisibility3}
+        sizeHud={sizeConfig}
       />
       <BodyCam
         name={name}
@@ -121,6 +126,7 @@ export function BodyCamEmplacement({
         emplacement={'bottom-right'}
         parentCallback={bodyCamCallBack}
         isSelected={bodyCamVisibility4}
+        sizeHud={sizeConfig}
       />
     </div>
   );

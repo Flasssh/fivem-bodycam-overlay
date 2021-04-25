@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Slider from 'react-input-slider';
 
 import { BodyCamEmplacement } from '../BodyCamEmplacement';
 
@@ -16,8 +17,9 @@ export function BodyCamConfigurator() {
   const [twelveHoursSys, setTwelveHoursSys] = useState(false);
 
   const [groupButtonNumber, setButtonNumber] = useState(1);
+  const [bodyCamSize, setBodyCamSize] = useState({ x: 13 });
 
-  let link = `http://localhost:3000/overlay/?p1=${position}&p2=${brandCamera}&p3=${policeName}&p4=${policeDepartement}&p5=${policerMatricule}&p6=${fullCaps}&p7=${dashCamStatus}&p8=${twelveHoursSys}&p9=${groupButtonNumber}`;
+  let link = `http://localhost:3000/overlay/?p1=${position}&p2=${brandCamera}&p3=${policeName}&p4=${policeDepartement}&p5=${policerMatricule}&p6=${fullCaps}&p7=${dashCamStatus}&p8=${twelveHoursSys}&p9=${groupButtonNumber}&p10=${bodyCamSize.x}`;
 
   const parentCallBackConfigurator = (data: string) => {
     setPosition(data);
@@ -36,6 +38,7 @@ export function BodyCamConfigurator() {
           twelveHoursSys={twelveHoursSys}
           styleNumber={groupButtonNumber}
           parentCallBackConfigurator={parentCallBackConfigurator}
+          sizeConfig={bodyCamSize.x}
         />
       </div>
       <div className="bodyCamConfigurator mt-6 grid-configurator">
@@ -66,7 +69,8 @@ export function BodyCamConfigurator() {
             min={1}
             minLength={1}
             value={policerMatricule}
-            onChange={(e) => setPolicerMatricule(e.currentTarget.value)}
+            pattern="[0-9]*"
+            onChange={(e: any) => setPolicerMatricule(e.currentTarget.value)}
           />
         </div>
         <div className="configurator4">
@@ -134,8 +138,18 @@ export function BodyCamConfigurator() {
             <span className="ml-2 text-blueGray-600">Full Caps</span>
           </div>
         </div>
+        <div className="configurator7" data-tip="Définissez la taille de votre BodyCam.">
+          <Slider
+            data-tip={bodyCamSize.x}
+            x={bodyCamSize.x}
+            xmin={12}
+            xmax={19}
+            xstep={1}
+            onChange={({ x }) => setBodyCamSize({ x: parseFloat(x.toFixed(2)) })}
+          />
+        </div>
         <div
-          className="configurator7"
+          className="configurator8"
           data-tip="Vous pouvez créer un lien qui vous permettra de l'afficher sur votre live.">
           <a
             target="_blank"

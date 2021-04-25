@@ -7,25 +7,13 @@ interface Props {
   location: any;
 }
 
-interface parsedQuery {
-  p1: any;
-  p2: any;
-  p3: any;
-  p4: any;
-  p5: any;
-  p6: any;
-  p7: any;
-  p8: any;
-  p9: any;
-}
-
 export function Overlay({ location }: Props) {
   let parsed = queryString.parse(location.search, {
     parseBooleans: true,
     parseNumbers: true,
   });
 
-  let { p1, p2, p3, p4, p5, p6, p7, p8, p9 }: parsedQuery = parsed;
+  let { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 }: any = parsed;
 
   return (
     <div>
@@ -40,6 +28,7 @@ export function Overlay({ location }: Props) {
         styleNumber={p9}
         emplacement={p1}
         isSelected={true}
+        sizeHud={p10}
       />
     </div>
   );

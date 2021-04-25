@@ -18,6 +18,7 @@ interface Props {
   emplacement: string;
   parentCallback: any;
   isSelected: boolean;
+  sizeHud: number;
 }
 
 type CamUiType = {
@@ -25,6 +26,7 @@ type CamUiType = {
   horizontalPosition: string;
   verticalPosition: string;
   isSelected: boolean;
+  sizeHud: number;
 };
 
 const CamUi = styled.div<CamUiType>`
@@ -33,18 +35,37 @@ const CamUi = styled.div<CamUiType>`
   ${({ verticalPosition }) => (isBottom(verticalPosition) ? 'bottom: 0;' : 'top: 0;')}
   ${({ horizontalPosition }) => (isRight(horizontalPosition) ? 'right: 0;' : 'left: 0;')}
   text-align: ${({ textAlign }) => textAlign};
+  margin: 10px;
   width: auto;
   transition: 0.3s;
-  margin: 10px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   position: absolute;
+  font-size: ${({ sizeHud }) => sizeHud}px;
 
   &:hover {
     opacity: 1;
   }
+`;
+
+type BlinkType = {
+  size: number;
+  isActive: boolean;
+};
+
+const BlinkCircle = styled.div<BlinkType>`
+  background-color: rgb(196, 13, 13);
+  border-radius: 50%;
+  width: ${(props) => props.size - 3}px;
+  height: ${(props) => props.size - 3}px;
+  margin: 5px 3px 0 3px;
+
+  ${({ isActive }) =>
+    isActive
+      ? 'animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;'
+      : 'background-color: rgb(99, 13, 13);opacity: 0.3;'}
 `;
 
 function isBottom(position: string) {
@@ -79,6 +100,7 @@ export function BodyCam({
   emplacement,
   parentCallback,
   isSelected,
+  sizeHud,
 }: Props) {
   let brandDashCam;
   let playerName;
@@ -122,6 +144,8 @@ export function BodyCam({
     parentCallback(emplacement);
   };
 
+  console.log(sizeHud);
+
   return (
     <div>
       <CamUi
@@ -129,12 +153,12 @@ export function BodyCam({
         horizontalPosition={horizontalPosition}
         verticalPosition={verticalPosition}
         isSelected={isSelected}
+        sizeHud={sizeHud}
         textAlign="right">
         <div className="bg-black	opacity-40 rounded p-1">
           <div className="blink-group">
             REC
-            {isActivated && <div className="blink-circle blink-rec"></div>}
-            {!isActivated && <div className="blink-circle no-blink-rec"></div>}
+            <BlinkCircle isActive={isActivated} size={sizeHud} />
             {brandDashCam}
           </div>
           <div>

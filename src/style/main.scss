@@ -22,9 +22,10 @@
 }
 
 .grid-configurator {
+
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(7, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
@@ -58,7 +59,8 @@
     grid-area: 1 / 1 / 6 / 2;
 }
 
-.configurator6 > div{
+
+.configurator6>div {
     margin: 6px 0;
 }
 
@@ -66,7 +68,16 @@
     grid-area: 6 / 1 / 7 / 6;
 }
 
-.configurator7>a {
+.configurator7 > div{
+    width: 100%;
+    margin-top: 18px;
+}
+
+.configurator8 {
+    grid-area: 7 / 1 / 8 / 6;
+}
+
+.configurator8>a {
     display: inline-block;
     text-align: center;
     font-weight: bold;
