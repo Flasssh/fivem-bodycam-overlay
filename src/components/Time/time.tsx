@@ -44,7 +44,7 @@ export function Time({ twelveHoursSys }: Props) {
   let currentTime;
   if (twelveHoursSys) {
     let aMpM = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
+    hours = now.getHours() % 12;
     hours = hours ? hours : 12;
     currentTime = `${date} ${monthNames[month]} ${year} ${hours}:${minutes}:${seconds} ${aMpM}`;
   } else {

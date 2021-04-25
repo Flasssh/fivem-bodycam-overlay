@@ -6,3 +6,4 @@ dist-ssr
 node_modules/*
 /.idea/
 /src/style/tailwind/tailwind.output.css
+/dist

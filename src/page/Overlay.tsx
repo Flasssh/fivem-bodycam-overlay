@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import React from 'react';
 
-import { BodyCam } from '../components/BodyCam';
+import { BodyCamOverlay } from '../components/BodyCam/realBodyCam';
 
 interface Props {
   location: any;
@@ -17,7 +17,7 @@ export function Overlay({ location }: Props) {
 
   return (
     <div>
-      <BodyCam
+      <BodyCamOverlay
         name={p3}
         matricule={p5}
         departement={p4}
