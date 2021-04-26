@@ -1,85 +1,83 @@
 .active {
-    background-color: rgba(4, 120, 87, 1);
+  background-color: rgba(4, 120, 87, 1);
 }
 
 .container {
-    min-width: 640px;
-    width: 50%;
-    margin: 0px auto;
-    margin-top: 20px !important;
+  min-width: 640px;
+  width: 50%;
+  margin: 0px auto;
+  margin-top: 20px !important;
 }
 
 .bodyCamPreviewer {
-    height: 360px;
-    background-color: #fff;
-    border: 2px solid rgba(107, 114, 128, 1);
-    border-radius: 6px;
-    position: relative;
+  height: 360px;
+  background-color: #fff;
+  border: 2px solid rgba(107, 114, 128, 1);
+  border-radius: 6px;
+  position: relative;
 }
 
-.bodyCamConfigurator>div {
-    margin-top: 10px;
+.bodyCamConfigurator > div {
+  margin-top: 10px;
 }
 
 .grid-configurator {
-
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
 .configurator1 {
-    grid-area: 1 / 2 / 2 / 6;
+  grid-area: 1 / 2 / 2 / 6;
 }
 
 .configurator2 {
-    grid-area: 2 / 2 / 3 / 6;
+  grid-area: 2 / 2 / 3 / 6;
 }
 
 .configurator3 {
-    grid-area: 3 / 2 / 4 / 6;
+  grid-area: 3 / 2 / 4 / 6;
 }
 
 .configurator4 {
-    grid-area: 4 / 2 / 5 / 6;
+  grid-area: 4 / 2 / 5 / 6;
 }
 
 .configurator5 {
-    grid-area: 5 / 2 / 6 / 6;
+  grid-area: 5 / 2 / 6 / 6;
 }
 
-.configurator5>div {
-    margin-top: 6px;
-    display: flex;
+.configurator5 > div {
+  margin-top: 6px;
+  display: flex;
 }
 
 .configurator6 {
-    grid-area: 1 / 1 / 6 / 2;
+  grid-area: 1 / 1 / 6 / 2;
 }
 
-
-.configurator6>div {
-    margin: 6px 0;
+.configurator6 > div {
+  margin: 6px 0;
 }
 
 .configurator7 {
-    grid-area: 6 / 1 / 7 / 6;
+  grid-area: 6 / 1 / 7 / 6;
 }
 
-.configurator7 > div{
-    width: 100%;
-    margin-top: 18px;
+.configurator7 > div {
+  width: 100%;
+  margin-top: 18px;
 }
 
 .configurator8 {
-    grid-area: 7 / 1 / 8 / 6;
+  grid-area: 7 / 1 / 8 / 6;
 }
 
-.configurator8>a {
-    display: inline-block;
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
+.configurator8 > a {
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
 }
