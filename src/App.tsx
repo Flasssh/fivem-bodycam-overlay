@@ -1,6 +1,3 @@
-import './style/tailwind/tailwind.output.css';
-import './style/main.scss';
-
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 

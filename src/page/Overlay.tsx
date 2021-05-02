@@ -1,35 +1,16 @@
 import queryString from 'query-string';
 import React from 'react';
 
-import { BodyCamOverlay } from '../components/BodyCam/realBodyCam';
-
 interface Props {
   location: any;
 }
 
 export function Overlay({ location }: Props) {
+  // eslint-disable-next-line no-unused-vars
   let parsed = queryString.parse(location.search, {
     parseBooleans: true,
     parseNumbers: true,
   });
 
-  let { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 }: any = parsed;
-
-  return (
-    <div>
-      <BodyCamOverlay
-        name={p3}
-        matricule={p5}
-        departement={p4}
-        cameraBrand={p2}
-        isActivated={p7}
-        fullCaps={p6}
-        twelveHoursSys={p8}
-        styleNumber={p9}
-        emplacement={p1}
-        isSelected={true}
-        sizeHud={p10}
-      />
-    </div>
-  );
+  return <div></div>;
 }

@@ -1,30 +1,30 @@
 Arguments: 
-  D:\Program Files (x86)\Node.js\node.exe D:\Program Files (x86)\Yarn\bin\yarn.js add @types/react-input-number
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add @types/react-custom-checkbox
 
 PATH: 
-  C:\Python39\Scripts\;C:\Python39\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\Program Files (x86)\Node.js\;C:\ProgramData\chocolatey\bin;D:\Program Files (x86)\Yarn\bin\;D:\Program Files (x86)\Git\cmd;C:\Users\Romain\AppData\Local\Microsoft\WindowsApps;D:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\Romain\AppData\Roaming\npm;C:\Users\Romain\AppData\Local\Yarn\bin;C:\Users\Romain\AppData\Local\GitHubDesktop\bin;C:\Users\Romain\AppData\Local\Gource\cmd
+  /Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS
 
 Yarn version: 
-  1.22.5
+  1.22.10
 
 Node version: 
-  14.15.3
+  12.18.2
 
 Platform: 
-  win32 x64
+  darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-input-number: Not found
-      at Request.params.callback [as _callback] (D:\Program Files (x86)\Yarn\lib\cli.js:66097:18)
-      at Request.self.callback (D:\Program Files (x86)\Yarn\lib\cli.js:140749:22)
+  Error: https://registry.yarnpkg.com/@types%2freact-custom-checkbox: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:66988:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:140749:22)
       at Request.emit (events.js:315:20)
-      at Request.<anonymous> (D:\Program Files (x86)\Yarn\lib\cli.js:141721:10)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141721:10)
       at Request.emit (events.js:315:20)
-      at IncomingMessage.<anonymous> (D:\Program Files (x86)\Yarn\lib\cli.js:141643:12)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141643:12)
       at Object.onceWrapper (events.js:421:28)
       at IncomingMessage.emit (events.js:327:22)
-      at endReadableNT (internal/streams/readable.js:1327:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+      at endReadableNT (_stream_readable.js:1221:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
 
 npm manifest: 
   {
@@ -39,7 +39,7 @@ npm manifest:
       "build": "tsc && vite build",
       "serve": "vite preview",
       "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
-      "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
+      "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,scss,md,json}\" ",
       "lint": "yarn lint:format && yarn lint:fix ",
       "type-check": "tsc"
     },
@@ -55,8 +55,8 @@ npm manifest:
       "npm-run-all": "^4.1.5",
       "query-string": "^7.0.0",
       "react": "^17.0.0",
+      "react-custom-checkbox": "^1.0.7",
       "react-dom": "^17.0.0",
-      "react-input-number": "^5.0.19",
       "react-input-slider": "^6.0.0",
       "react-router-dom": "^5.2.0",
       "react-select": "^4.3.0",
@@ -8135,6 +8135,11 @@ Lockfile:
       minimist "^1.2.0"
       strip-json-comments "~2.0.1"
   
+  react-custom-checkbox@^1.0.7:
+    version "1.0.7"
+    resolved "https://registry.yarnpkg.com/react-custom-checkbox/-/react-custom-checkbox-1.0.7.tgz#cf2b7ed054a93ea7b567c6147fb2003e8a59e720"
+    integrity sha512-2gcYly2He5pLWlC9IWXglwenQkWPfZxaomskhbOSy55llP9sYe88gWCl7iGEd5bIkhDCD6eVf7aUNu1eLcLh8Q==
+  
   react-dom@^17.0.0:
     version "17.0.2"
     resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
@@ -8155,15 +8160,6 @@ Lockfile:
     integrity sha512-nL9uS7jEs/zu8sqwFE5MAPx6pPkNAriACQ2rGLlqmKr2sPGtN7TXTyDdQt4lbNXVx7Uzadb40x8qotIuru6Rhg==
     dependencies:
       prop-types "^15.5.8"
-  
-  react-input-number@^5.0.19:
-    version "5.0.19"
-    resolved "https://registry.yarnpkg.com/react-input-number/-/react-input-number-5.0.19.tgz#3ce3e9522190c908a0f616364ca735914648c83c"
-    integrity sha512-Aa9RmOoOgzCn6b/RYyrKRkBtIWGum6v9sA73rJFtl9N0O3kjWrAdj9lk09n9QoOaxvyEHc3GQZwLcUrBEIH2Cw==
-    dependencies:
-      "@babel/runtime" "^7.5.5"
-      "@emotion/core" "^10.0.14"
-      lodash "^4.17.15"
   
   react-input-slider@^6.0.0:
     version "6.0.0"

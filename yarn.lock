@@ -8038,6 +8038,11 @@ rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-custom-checkbox@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-custom-checkbox/-/react-custom-checkbox-1.0.7.tgz#cf2b7ed054a93ea7b567c6147fb2003e8a59e720"
+  integrity sha512-2gcYly2He5pLWlC9IWXglwenQkWPfZxaomskhbOSy55llP9sYe88gWCl7iGEd5bIkhDCD6eVf7aUNu1eLcLh8Q==
+
 react-dom@^17.0.0:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"

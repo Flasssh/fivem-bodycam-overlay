@@ -1,21 +1,29 @@
+import '../style/style.scss';
+
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
+import styled from 'styled-components';
 
-import { BodyCamConfigurator } from '../components/BodyCamConfigurator';
-import { Footer } from '../components/Footer/Footer';
+import { BodyCam } from '../components/BodyCam';
 
-let bodyStyle = {
-  backgroundColor: 'rgba(17, 24, 39, 1)',
-};
+const HomeContent = styled.div`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: #111827;
+`;
+
+const Container = styled.div`
+  width: 800px;
+  min-width: 800px;
+  margin: 0 auto;
+`;
 
 export function Home() {
   return (
-    <div className="h-full w-full absolute" style={bodyStyle}>
-      <div className="container mx-auto mt-10">
-        <BodyCamConfigurator />
-      </div>
-      <Footer />
-      <ReactTooltip />
-    </div>
+    <HomeContent>
+      <Container>
+        <BodyCam />
+      </Container>
+    </HomeContent>
   );
 }

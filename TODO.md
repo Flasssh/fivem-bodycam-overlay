@@ -7,9 +7,9 @@
 - Bien optimiser pour OBS
 - Essayer de voir si je peux faire télécharger une préconfiguration de OBS
 
-## Tout dois pouvoir être sauvegarder dans les cookies.
+## Cookie
 
-- Demander l'autorisation pour pouvoir sauvegarder dans les cookies en expliquant pourquoi.
+- Sauvergarder les cookies pourraient être pratique pour que les utilisateurs n'aie pas besoin de reconfigurer leur ancienne configuration.
 
 ## Langue
 
