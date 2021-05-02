@@ -81,7 +81,7 @@ export function TextField({ callback }: Props) {
   return (
     <TextFieldContent isOpen={stateAccordion}>
       <TextFieldHeader onClick={() => setStateAccordion(!stateAccordion)}>
-        <TextFieldTitle>DASHCAM TextField</TextFieldTitle>
+        <TextFieldTitle>TextField</TextFieldTitle>
         <Icon>{icon}</Icon>
       </TextFieldHeader>
       <TextFieldBody>
