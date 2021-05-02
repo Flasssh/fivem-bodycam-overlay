@@ -31,7 +31,7 @@ const OptionTitle = styled.div`
 `;
 
 const OptionCheckbox = styled.div`
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -55,7 +55,7 @@ export function Option({ callback }: Props) {
 
   const [stateAccordion, setStateAccordion] = useState(false);
 
-  callback([isTrunOn, hoursSystem, isTrunOn]);
+  callback([isTrunOn, hoursSystem, isFullCaps]);
 
   let icon = stateAccordion ? '-' : '+';
 

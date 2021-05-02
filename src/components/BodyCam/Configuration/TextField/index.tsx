@@ -20,7 +20,15 @@ const TextFieldHeader = styled.div`
 `;
 
 const TextFieldBody = styled.div`
+  margin-top: 15px;
   padding: 0 10px 10px 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px 10px;
+  grid-template-areas:
+    '. .'
+    '. .';
 `;
 
 const TextFieldTitle = styled.div`
@@ -29,18 +37,30 @@ const TextFieldTitle = styled.div`
   font-size: 17px;
 `;
 
-const TextFieldCheckbox = styled.div`
-  margin-top: 10px;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-`;
-
 const Icon = styled.span`
   text-decoration: none;
   color: #ƒff;
   outline: none;
   user-select: none;
+`;
+
+const TextFieldInput = styled.input`
+  border: none;
+  box-shadow: 0 0 0 2px rgba(11, 18, 32, 1);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-radius: 0.375rem;
+  outline: none;
+  height: 28px;
+  width: calc(100% - 10px);
+  background-color: rgb(17, 24, 40);
+  color: #fff;
+  padding: 3px 6px;
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+    border: none;
+  }
 `;
 
 interface Props {
@@ -51,7 +71,12 @@ export function TextField({ callback }: Props) {
   const [stateAccordion, setStateAccordion] = useState(false);
   let icon = stateAccordion ? '-' : '+';
 
-  callback(null);
+  const [cameraBrandValue, setCameraBrandValue] = useState('');
+  const [policierNameValue, setPolicierNameValue] = useState('');
+  const [policeBadgeNumber, setPoliceBadgeNumber] = useState('');
+  const [policeDepartement, setPoliceDepartement] = useState('');
+
+  callback([cameraBrandValue, policierNameValue, policeBadgeNumber, policeDepartement]);
 
   return (
     <TextFieldContent isOpen={stateAccordion}>
@@ -60,7 +85,30 @@ export function TextField({ callback }: Props) {
         <Icon>{icon}</Icon>
       </TextFieldHeader>
       <TextFieldBody>
-        <TextFieldCheckbox></TextFieldCheckbox>
+        <TextFieldInput
+          type="text"
+          value={cameraBrandValue}
+          onChange={(e) => setCameraBrandValue(e.target.value)}
+          placeholder="Camera Brand"
+        />
+        <TextFieldInput
+          type="text"
+          value={policierNameValue}
+          onChange={(e) => setPolicierNameValue(e.target.value)}
+          placeholder="Policier Name"
+        />
+        <TextFieldInput
+          type="text"
+          value={policeBadgeNumber}
+          onChange={(e) => setPoliceBadgeNumber(e.target.value)}
+          placeholder="Policier Badge"
+        />
+        <TextFieldInput
+          type="text"
+          value={policeDepartement}
+          onChange={(e) => setPoliceDepartement(e.target.value)}
+          placeholder="Police Departement"
+        />
       </TextFieldBody>
     </TextFieldContent>
   );
