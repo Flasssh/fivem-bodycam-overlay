@@ -2,17 +2,27 @@ import React, { useState } from 'react';
 import Checkbox from 'react-custom-checkbox';
 import styled from 'styled-components';
 
-const OptionContent = styled.div`
-    background-color: rgba(32, 37, 50, 1);
-    border: 1px solid rgba(11, 18, 32, 1)
-    width: 100%;
-    height: auto;
-    padding: 10px;
+type TypeContent = {
+  isOpen: boolean;
+};
+
+const OptionContent = styled.div<TypeContent>`
+  background-color: rgba(32, 37, 50, 1);
+  border: 1px solid rgba(11, 18, 32, 1);
+  ${(props) => (props.isOpen ? 'height: auto;' : 'height: 40px;')}
+  overflow: hidden;
 `;
 
-const OptionHeader = styled.div``;
+const OptionHeader = styled.div`
+  padding: 10px 10px 0 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+`;
 
-const OptionBody = styled.div``;
+const OptionBody = styled.div`
+  padding: 0 10px 10px 10px;
+`;
 
 const OptionTitle = styled.div`
   margin: 0;
@@ -27,15 +37,33 @@ const OptionCheckbox = styled.div`
   justify-content: space-between;
 `;
 
-export function Option() {
+const Icon = styled.span`
+  text-decoration: none;
+  color: #ƒff;
+  outline: none;
+  user-select: none;
+`;
+
+interface Props {
+  callback: any;
+}
+
+export function Option({ callback }: Props) {
   const [isTrunOn, setCamState] = useState(false);
   const [hoursSystem, setHoursSystem] = useState(false);
   const [isFullCaps, setFullCaps] = useState(false);
 
+  const [stateAccordion, setStateAccordion] = useState(false);
+
+  callback([isTrunOn, hoursSystem, isTrunOn]);
+
+  let icon = stateAccordion ? '-' : '+';
+
   return (
-    <OptionContent>
-      <OptionHeader>
+    <OptionContent isOpen={stateAccordion}>
+      <OptionHeader onClick={() => setStateAccordion(!stateAccordion)}>
         <OptionTitle>DASHCAM OPTION</OptionTitle>
+        <Icon>{icon}</Icon>
       </OptionHeader>
       <OptionBody>
         <OptionCheckbox>
