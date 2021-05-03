@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { CreateLink } from './CreateLink';
 import { Option } from './Option/index';
 import { Size } from './Size';
 import { Style } from './Style';
@@ -11,6 +12,7 @@ const ConfigurationContent = styled.div`
 
   & > div {
     margin-bottom: 20px;
+    border-radius: 6px;
   }
 `;
 
@@ -37,6 +39,7 @@ export function Configuration() {
       <TextField callback={textFieldCallBack} />
       <Size callback={sizeCallBack} />
       <Style callback={styleCallback} />
+      <CreateLink />
     </ConfigurationContent>
   );
 }

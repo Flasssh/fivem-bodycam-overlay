@@ -21,7 +21,7 @@ const StyleHeader = styled.div`
 
 const StyleBody = styled.div`
   margin-top: 15px;
-  padding: 0 10px 10px 10px;
+  padding: 0 10px 20px 10px;
   display: flex;
   padding-bottom: 10px;
   justify-content: space-between;
@@ -41,7 +41,9 @@ const Icon = styled.span`
 `;
 
 const StyledRadioContent = styled.label`
+  cursor: pointer;
   display: flex;
+  user-select: none;
 `;
 
 const StyledTemplate = styled.div`
@@ -53,7 +55,9 @@ const StyledTemplate = styled.div`
   color: black;
 `;
 
-const StyleRadio = styled.input``;
+const StyleRadio = styled.input`
+  border: 1px solid #111827;
+`;
 
 interface Props {
   callback: any;
