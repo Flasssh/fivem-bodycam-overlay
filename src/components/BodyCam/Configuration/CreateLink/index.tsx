@@ -1,5 +1,7 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import styled from 'styled-components';
+import { useClipboard } from 'use-clipboard-copy';
 
 const Link = styled.button`
   background: #a30036;
@@ -9,14 +11,14 @@ const Link = styled.button`
   cursor: pointer;
   width: 100%;
 
-  &:active .front {
-    transform: translateY(-2px);
-    transition: transform 34ms;
-  }
-
   &:hover .front {
     transform: translateY(-6px);
     transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+
+  &:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
   }
 
   &:focus:not(:focus-visible) {
@@ -32,20 +34,32 @@ const LinkFront = styled.span`
   background: #f0003c;
   color: white;
   transform: translateY(-4px);
+  font-weight: 800;
 `;
 
 const LinkContent = styled.div`
   width: 100%;
-  margin-top: 30px;
+  margin-top: 36px;
 `;
 
-// https://www.joshwcomeau.com/animation/3d-button/
-
 export function CreateLink() {
+  const clipboard = useClipboard();
+
+  const handleClick = () => {
+    if (clipboard.isSupported()) {
+      clipboard.copy('12345');
+      toast.success('Successfully copied!');
+    } else {
+      toast.error('We can\t copy on the clipboard');
+    }
+  };
+
   return (
     <LinkContent>
       <Link>
-        <LinkFront className="front">Crée le lien.</LinkFront>
+        <LinkFront onClick={handleClick} className="front">
+          Crée le lien.
+        </LinkFront>
       </Link>
     </LinkContent>
   );

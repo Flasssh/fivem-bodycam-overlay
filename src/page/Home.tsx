@@ -1,6 +1,7 @@
 import '../style/style.scss';
 
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import styled from 'styled-components';
 
 import { BodyCam } from '../components/BodyCam';
@@ -8,7 +9,6 @@ import { BodyCam } from '../components/BodyCam';
 const HomeContent = styled.div`
   height: 100%;
   width: 100%;
-  position: absolute;
 `;
 
 const Container = styled.div`
@@ -23,6 +23,7 @@ export function Home() {
       <Container>
         <BodyCam />
       </Container>
+      <Toaster position="top-right" reverseOrder={false} />
     </HomeContent>
   );
 }

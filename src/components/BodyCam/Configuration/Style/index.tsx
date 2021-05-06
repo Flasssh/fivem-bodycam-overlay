@@ -23,7 +23,7 @@ const StyleBody = styled.div`
   margin-top: 15px;
   padding: 0 10px 20px 10px;
   display: flex;
-  padding-bottom: 10px;
+  padding-bottom: 16px;
   justify-content: space-between;
 `;
 
