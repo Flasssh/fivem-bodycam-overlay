@@ -9,7 +9,6 @@ const HomeContent = styled.div`
   height: 100%;
   width: 100%;
   position: absolute;
-  background-color: #111827;
 `;
 
 const Container = styled.div`

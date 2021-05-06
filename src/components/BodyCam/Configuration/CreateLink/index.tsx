@@ -1,23 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Link = styled.a`
-  background-color: rgb(52, 211, 153);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
+const Link = styled.button`
+  background: #a30036;
+  border: none;
+  border-radius: 12px;
+  padding: 0;
   cursor: pointer;
-  display: inline-block;
-  width: calc(100% - 2em);
-  text-align: center;
+  width: 100%;
 
-  &:hover {
-    background: rgb(5, 150, 105);
+  &:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
   }
+
+  &:hover .front {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+`;
+
+const LinkFront = styled.span`
+  display: block;
+  padding: 12px 42px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  background: #f0003c;
+  color: white;
+  transform: translateY(-4px);
 `;
 
 const LinkContent = styled.div`
   width: 100%;
+  margin-top: 30px;
 `;
 
 // https://www.joshwcomeau.com/animation/3d-button/
@@ -25,7 +44,9 @@ const LinkContent = styled.div`
 export function CreateLink() {
   return (
     <LinkContent>
-      <Link target="_blank">Create a link.</Link>
+      <Link>
+        <LinkFront className="front">Crée le lien.</LinkFront>
+      </Link>
     </LinkContent>
   );
 }

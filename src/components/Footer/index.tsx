@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const FooterContent = styled.div`
   position: block;
   bottom: 0;
+  padding-bottom: 4px;
 `;
 
 const FooterText = styled.p`
