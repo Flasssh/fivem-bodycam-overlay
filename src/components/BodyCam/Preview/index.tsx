@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PreviewContent = styled.div`
-  width: 800px;
-  height: 450px;
+  width: calc(800px - 4px);
+  height: calc(450px - 4px);
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 0 0 2px rgba(107, 114, 128, 1);
+  border: 2px solid rgba(107, 114, 128, 1);
   border-radius: 6px;
   margin-top: 15px;
 `;
@@ -15,8 +15,6 @@ const PreviewContentBorder = styled.div`
   width: calc(100% - 20px);
   height: calc(100% - 20px);
   margin: 10px;
-  position: relative;
-  top: 10px;
 `;
 
 export function Preview() {
