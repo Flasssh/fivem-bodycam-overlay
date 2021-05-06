@@ -11,5 +11,5 @@ const PreviewContent = styled.div`
 `;
 
 export function Preview() {
-  return <PreviewContent>ça marche théo!</PreviewContent>;
+  return <PreviewContent></PreviewContent>;
 }

@@ -64,7 +64,7 @@ interface Props {
 }
 
 export function Style({ callback }: Props) {
-  const [stateAccordion, setStateAccordion] = useState(true);
+  const [stateAccordion, setStateAccordion] = useState(false);
   let icon = stateAccordion ? '-' : '+';
 
   const [selectedOption, setSelectedOption] = useState(1);
