@@ -9,7 +9,7 @@ type TypeContent = {
 const OptionContent = styled.div<TypeContent>`
   background-color: rgba(32, 37, 50, 1);
   border: 1px solid rgba(11, 18, 32, 1);
-  ${(props) => (props.isOpen ? 'height: auto;' : 'height: 40px;')}
+  ${(props) => (props.isOpen ? 'height: auto;' : 'height: 45px;')}
   overflow: hidden;
 `;
 
@@ -28,6 +28,7 @@ const OptionTitle = styled.div`
   margin: 0;
   font-weight: bold;
   font-size: 17px;
+  line-height: 27px;
 `;
 
 const OptionCheckbox = styled.div`
@@ -42,6 +43,7 @@ const Icon = styled.span`
   color: #ƒff;
   outline: none;
   user-select: none;
+  line-height: 27px;
 `;
 
 interface Props {
