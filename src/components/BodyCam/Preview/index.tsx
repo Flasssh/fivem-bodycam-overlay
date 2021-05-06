@@ -10,6 +10,19 @@ const PreviewContent = styled.div`
   margin-top: 15px;
 `;
 
+const PreviewContentBorder = styled.div`
+  background: red;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  margin: 10px;
+  position: relative;
+  top: 10px;
+`;
+
 export function Preview() {
-  return <PreviewContent></PreviewContent>;
+  return (
+    <PreviewContent>
+      <PreviewContentBorder></PreviewContentBorder>
+    </PreviewContent>
+  );
 }

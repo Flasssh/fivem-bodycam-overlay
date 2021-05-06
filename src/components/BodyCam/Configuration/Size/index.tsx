@@ -23,6 +23,13 @@ const SizeHeader = styled.div`
 const SizeBody = styled.div`
   margin-top: 15px;
   padding: 0 10px 10px 10px;
+  display: flex;
+  justify-content: space-between;
+
+  & .css-1ckl14q-Slider {
+    margin-top: 5px;
+    width: 90% !important;
+  }
 `;
 
 const SizeTitle = styled.div`
@@ -38,6 +45,14 @@ const Icon = styled.span`
   user-select: none;
 `;
 
+const SizeInformationSlider = styled.span`
+  color: #fff;
+  margin: 0 4px;
+  width: 20px;
+  text-align: center;
+  user-select: none;
+`;
+
 interface Props {
   callback: any;
 }
@@ -49,6 +64,9 @@ export function Size({ callback }: Props) {
   const [sizeValue, setSizeValue] = useState({ x: 14 });
   callback(sizeValue.x);
 
+  const MINIMUM_SIZE = 10;
+  const MAXIMUM_SIZE = 21;
+
   return (
     <SizeContent isOpen={stateAccordion}>
       <SizeHeader onClick={() => setStateAccordion(!stateAccordion)}>
@@ -56,12 +74,13 @@ export function Size({ callback }: Props) {
         <Icon>{icon}</Icon>
       </SizeHeader>
       <SizeBody>
+        <SizeInformationSlider>{MINIMUM_SIZE}</SizeInformationSlider>
         <Slider
           x={sizeValue.x}
           axis="x"
           onChange={({ x }) => setSizeValue({ x })}
-          xmax={21}
-          xmin={10}
+          xmax={MAXIMUM_SIZE}
+          xmin={MINIMUM_SIZE}
           xstep={1}
           styles={{
             track: {
@@ -80,6 +99,7 @@ export function Size({ callback }: Props) {
             },
           }}
         />
+        <SizeInformationSlider>{MAXIMUM_SIZE}</SizeInformationSlider>
       </SizeBody>
     </SizeContent>
   );
