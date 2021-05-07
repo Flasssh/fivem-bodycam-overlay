@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Hud } from '../Hud';
+
 const PreviewContent = styled.div`
   width: calc(800px - 4px);
   height: calc(450px - 4px);
@@ -11,7 +13,6 @@ const PreviewContent = styled.div`
 `;
 
 const PreviewContentBorder = styled.div`
-  background: red;
   width: calc(100% - 20px);
   height: calc(100% - 20px);
   margin: 10px;
@@ -20,7 +21,12 @@ const PreviewContentBorder = styled.div`
 export function Preview() {
   return (
     <PreviewContent>
-      <PreviewContentBorder></PreviewContentBorder>
+      <PreviewContentBorder>
+        <Hud isSelected={true} position={'top-left'}></Hud>
+        <Hud isSelected={false} position={'top-right'}></Hud>
+        <Hud isSelected={false} position={'bottom-left'}></Hud>
+        <Hud isSelected={false} position={'bottom-right'}></Hud>
+      </PreviewContentBorder>
     </PreviewContent>
   );
 }

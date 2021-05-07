@@ -58,7 +58,7 @@ export function CreateLink() {
     <LinkContent>
       <Link>
         <LinkFront onClick={handleClick} className="front">
-          Créez le lien.
+          Copiez le lien.
         </LinkFront>
       </Link>
     </LinkContent>

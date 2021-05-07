@@ -6,3 +6,13 @@ body {
     'Helvetica', 'Arial', sans-serif;
   background-color: #111827;
 }
+
+@keyframes blinker {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
