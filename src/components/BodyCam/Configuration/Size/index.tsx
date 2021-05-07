@@ -55,16 +55,11 @@ const SizeInformationSlider = styled.span`
   user-select: none;
 `;
 
-interface Props {
-  callback: any;
-}
-
-export function Size({ callback }: Props) {
+export function Size() {
   const [stateAccordion, setStateAccordion] = useState(false);
   let icon = stateAccordion ? '-' : '+';
 
   const [sizeValue, setSizeValue] = useState({ x: 14 });
-  callback(sizeValue.x);
 
   const MINIMUM_SIZE = 10;
   const MAXIMUM_SIZE = 21;

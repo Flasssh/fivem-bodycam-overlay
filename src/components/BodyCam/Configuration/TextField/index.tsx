@@ -65,11 +65,7 @@ const TextFieldInput = styled.input`
   }
 `;
 
-interface Props {
-  callback: any;
-}
-
-export function TextField({ callback }: Props) {
+export function TextField() {
   const [stateAccordion, setStateAccordion] = useState(false);
   let icon = stateAccordion ? '-' : '+';
 
@@ -77,8 +73,6 @@ export function TextField({ callback }: Props) {
   const [policierNameValue, setPolicierNameValue] = useState('');
   const [policeBadgeNumber, setPoliceBadgeNumber] = useState('');
   const [policeDepartement, setPoliceDepartement] = useState('');
-
-  callback([cameraBrandValue, policierNameValue, policeBadgeNumber, policeDepartement]);
 
   return (
     <TextFieldContent isOpen={stateAccordion}>

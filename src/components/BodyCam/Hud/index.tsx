@@ -55,20 +55,17 @@ interface Props {
 }
 
 export function Hud({ position, isSelected }: Props) {
-  console.log(isSelected);
+  if (isSelected) {
+    return (
+      <HudCamContent>
+        <Cam />
+      </HudCamContent>
+    );
+  }
   return (
-    <div>
-      {isSelected && (
-        <HudCamContent>
-          <Cam />
-        </HudCamContent>
-      )}
-      {!isSelected && (
-        <HudContent
-          positionVertical={position.split('-')[0]}
-          positionHorizontal={position.split('-')[1]}
-        />
-      )}
-    </div>
+    <HudContent
+      positionVertical={position.split('-')[0]}
+      positionHorizontal={position.split('-')[1]}
+    />
   );
 }

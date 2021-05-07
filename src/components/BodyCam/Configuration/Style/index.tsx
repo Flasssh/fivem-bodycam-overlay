@@ -61,17 +61,11 @@ const StyleRadio = styled.input`
   border: 1px solid #111827;
 `;
 
-interface Props {
-  callback: any;
-}
-
-export function Style({ callback }: Props) {
+export function Style() {
   const [stateAccordion, setStateAccordion] = useState(false);
   let icon = stateAccordion ? '-' : '+';
 
   const [selectedOption, setSelectedOption] = useState(1);
-
-  callback(selectedOption);
 
   return (
     <StyleContent isOpen={stateAccordion}>

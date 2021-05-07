@@ -16,16 +16,17 @@ const PreviewContentBorder = styled.div`
   width: calc(100% - 20px);
   height: calc(100% - 20px);
   margin: 10px;
+  position: relative;
 `;
 
 export function Preview() {
   return (
     <PreviewContent>
       <PreviewContentBorder>
-        <Hud isSelected={true} position={'top-left'}></Hud>
-        <Hud isSelected={false} position={'top-right'}></Hud>
-        <Hud isSelected={false} position={'bottom-left'}></Hud>
-        <Hud isSelected={false} position={'bottom-right'}></Hud>
+        <Hud isSelected={true} position={'top-left'} />
+        <Hud isSelected={false} position={'top-right'} />
+        <Hud isSelected={false} position={'bottom-left'} />
+        <Hud isSelected={false} position={'bottom-right'} />
       </PreviewContentBorder>
     </PreviewContent>
   );

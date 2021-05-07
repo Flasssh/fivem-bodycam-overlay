@@ -46,18 +46,12 @@ const Icon = styled.span`
   line-height: 27px;
 `;
 
-interface Props {
-  callback: any;
-}
-
-export function Option({ callback }: Props) {
-  const [isTrunOn, setCamState] = useState(false);
+export function Option() {
+  const [state, setState] = useState(false);
   const [hoursSystem, setHoursSystem] = useState(false);
-  const [isFullCaps, setFullCaps] = useState(false);
+  const [isCaps, setCaps] = useState(false);
 
   const [stateAccordion, setStateAccordion] = useState(false);
-
-  callback([isTrunOn, hoursSystem, isFullCaps]);
 
   let icon = stateAccordion ? '-' : '+';
 
@@ -72,9 +66,9 @@ export function Option({ callback }: Props) {
           <Checkbox
             label="ON/OFF"
             name="CamState"
-            checked={isTrunOn}
+            checked={state}
             onChange={(value: boolean) => {
-              setCamState(value);
+              setState(value);
             }}
             icon={
               <svg
@@ -116,9 +110,9 @@ export function Option({ callback }: Props) {
           <Checkbox
             label="FULL CAPS"
             name="fullCaps"
-            checked={isFullCaps}
+            checked={isCaps}
             onChange={(value: boolean) => {
-              setFullCaps(value);
+              setCaps(value);
             }}
             icon={
               <svg
