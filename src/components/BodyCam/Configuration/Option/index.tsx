@@ -36,6 +36,10 @@ const OptionCheckbox = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+
+  & > label {
+    cursor: pointer;
+  }
 `;
 
 const Icon = styled.span`

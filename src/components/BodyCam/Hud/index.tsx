@@ -29,7 +29,7 @@ const HudContent = styled.div<HudStyle>`
   ${(props) => props.positionVertical}: 0;
 `;
 
-const HudCamContent = styled.div`
+const HudCamContent = styled.div<HudStyle>`
   min-width: 270px;
   min-height: 100px;
   max-width: 300px;
@@ -41,7 +41,9 @@ const HudCamContent = styled.div`
   border-radius: 6px;
   box-sizing: border-box;
   user-select: none;
-  position: relative;
+  position: absolute;
+  ${(props) => props.positionHorizontal}: 0;
+  ${(props) => props.positionVertical}: 0;
 `;
 
 type HudStyle = {
@@ -57,7 +59,9 @@ interface Props {
 export function Hud({ position, isSelected }: Props) {
   if (isSelected) {
     return (
-      <HudCamContent>
+      <HudCamContent
+        positionVertical={position.split('-')[0]}
+        positionHorizontal={position.split('-')[1]}>
         <Cam />
       </HudCamContent>
     );
