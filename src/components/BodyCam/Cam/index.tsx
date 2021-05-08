@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
+import { BodyCamContext } from '../../../context';
 import { Rec } from '../Rec';
 import { Time } from '../Time/time';
 
@@ -25,16 +26,39 @@ const CamDepartement = styled.div``;
 
 const CamTime = styled.div``;
 
+interface Props {
+  state: boolean;
+  hoursSystem: boolean;
+  isCaps: boolean;
+  cameraBrand: string;
+  policierName: string;
+  policeDepartement: string;
+  policierBadgeNumber: number;
+  size: number;
+  style: number;
+}
+
 export function Cam() {
+  const {
+    state,
+    hoursSystem,
+    cameraBrand,
+    policierName,
+    policeDepartement,
+    policierBadgeNumber,
+  }: Props = useContext(BodyCamContext);
+
   return (
     <CamContent>
       <CamHeader>
-        REC <Rec isActive={true} /> XION CHASE-CAM
+        REC <Rec isActive={state} /> {cameraBrand}
       </CamHeader>
-      <CamPolicier>M. Marino [37]</CamPolicier>
-      <CamDepartement>LOS SANTOS POLICE DEPARTEMENT</CamDepartement>
+      <CamPolicier>
+        {policierName} [{policierBadgeNumber}]
+      </CamPolicier>
+      <CamDepartement>{policeDepartement}</CamDepartement>
       <CamTime>
-        <Time twelveHoursSys={true} />
+        <Time twelveHoursSys={hoursSystem} />
       </CamTime>
     </CamContent>
   );

@@ -35,7 +35,7 @@
     "use-clipboard-copy": "^0.2.0"
   },
   "devDependencies": {
-    "@types/faker": "^5.5.3",
+    "@types/faker": "^5.5.4",
     "@types/node-sass": "^4.11.1",
     "@types/query-string": "^6.3.0",
     "@types/react": "^17.0.5",

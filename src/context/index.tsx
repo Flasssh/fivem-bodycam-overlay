@@ -1,3 +1,4 @@
+import faker from 'faker';
 import React from 'react';
 
 export type BodyCamContextType = {
@@ -12,13 +13,19 @@ export type BodyCamContextType = {
   style: number;
 };
 
+const generatedPolicierName = faker.name.findName();
+const generatedPolicierBageNuber = faker.random.number({
+  min: 1,
+  max: 999,
+});
+
 export const BodyCamContext = React.createContext<BodyCamContextType>({
   state: true,
   hoursSystem: true,
   isCaps: true,
-  cameraBrand: 'XION',
-  policierName: 'John',
-  policierBadgeNumber: 123,
+  cameraBrand: 'XION DASCHCAM',
+  policierName: generatedPolicierName,
+  policierBadgeNumber: generatedPolicierBageNuber,
   policeDepartement: 'LOS SANTOS POLICE DEPARTEMENT',
   size: 13,
   style: 2,
