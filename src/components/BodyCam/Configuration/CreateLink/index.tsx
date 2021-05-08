@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import styled from 'styled-components';
 import { useClipboard } from 'use-clipboard-copy';
+
+import { BodyCamContext } from '../../../../context';
 
 const Link = styled.button`
   background: #a30036;
@@ -42,12 +44,19 @@ const LinkContent = styled.div`
   margin-top: 36px;
 `;
 
+interface PropsContext {
+  state: boolean;
+}
+
 export function CreateLink() {
   const clipboard = useClipboard();
+  let { state }: PropsContext = useContext(BodyCamContext);
 
   const handleClick = () => {
     if (clipboard.isSupported()) {
-      clipboard.copy('12345');
+      // TODO: recupt context
+
+      clipboard.copy(`https://localhost:3000/${state}`);
       toast.success('Successfully copied!');
     } else {
       toast.error('We can\t copy on the clipboard');

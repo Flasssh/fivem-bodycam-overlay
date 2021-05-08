@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Checkbox from 'react-custom-checkbox';
 import styled from 'styled-components';
+
+import { BodyCamContext } from '../../../../context';
 
 type TypeContent = {
   isOpen: boolean;
@@ -50,8 +52,14 @@ const Icon = styled.span`
   line-height: 27px;
 `;
 
+interface PropsContext {
+  state: boolean;
+}
+
 export function Option() {
-  const [state, setState] = useState(false);
+  let { state }: PropsContext = useContext(BodyCamContext);
+
+  const [camState, setState] = useState(state);
   const [hoursSystem, setHoursSystem] = useState(false);
   const [isCaps, setCaps] = useState(false);
 
@@ -70,7 +78,7 @@ export function Option() {
           <Checkbox
             label="ON/OFF"
             name="CamState"
-            checked={state}
+            checked={camState}
             onChange={(value: boolean) => {
               setState(value);
             }}

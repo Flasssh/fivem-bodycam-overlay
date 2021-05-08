@@ -35,11 +35,13 @@ interface Props {
   policeDepartement: string;
   policierBadgeNumber: number;
   style: number;
+  isPulse: boolean;
 }
 
 export function Cam() {
   let {
     state,
+    isPulse,
     hoursSystem,
     isCaps,
     cameraBrand,
@@ -57,7 +59,7 @@ export function Cam() {
   return (
     <CamContent>
       <CamHeader>
-        REC <Rec isActive={state} /> {cameraBrand}
+        REC <Rec isActive={state} isPulse={isPulse} /> {cameraBrand}
       </CamHeader>
       <CamPolicier>
         {policierName} [{policierBadgeNumber}]

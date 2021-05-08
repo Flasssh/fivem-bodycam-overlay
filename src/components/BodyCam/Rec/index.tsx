@@ -6,7 +6,7 @@ type BlinkType = {
 };
 
 const BlinkCircle = styled.div<BlinkType>`
-  background-color: rgb(196, 13, 13);
+  background-color: #c40d0d;
   border-radius: 50%;
   width: 14px;
   height: 14px;
@@ -18,14 +18,28 @@ const BlinkCircle = styled.div<BlinkType>`
       : 'background-color: rgb(99, 13, 13);opacity: 0.3;'}
 `;
 
+const PulseRec = styled.span<BlinkType>`
+  display: block;
+  margin: 3px 5px 0 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #c40d0d;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+  ${({ isActive }) => (isActive ? 'animation: pulse 2s infinite;' : 'animation: none;')}
+`;
+
 interface Props {
   isActive: boolean;
+  isPulse?: boolean;
 }
 
-export function Rec({ isActive }: Props) {
+export function Rec({ isActive, isPulse }: Props) {
   return (
     <div>
-      <BlinkCircle isActive={isActive} />
+      {isPulse && <PulseRec isActive={isActive} />}
+      {!isPulse && <BlinkCircle isActive={isActive} />}
     </div>
   );
 }
