@@ -8,9 +8,9 @@ type BlinkType = {
 const BlinkCircle = styled.div<BlinkType>`
   background-color: rgb(196, 13, 13);
   border-radius: 50%;
-  width: 17px;
-  height: 17px;
-  margin: 0 3px;
+  width: 14px;
+  height: 14px;
+  margin: 3px 5px 0 5px;
 
   ${({ isActive }) =>
     isActive

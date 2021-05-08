@@ -9,10 +9,10 @@ const CamContent = styled.div`
   height: calc(100% - 20px);
   width: calc(100% - 20px);
   margin: 10px;
-  position: absolute;
 
   & > div {
     height: 20px;
+    line-height: 20px;
   }
 `;
 
@@ -34,19 +34,25 @@ interface Props {
   policierName: string;
   policeDepartement: string;
   policierBadgeNumber: number;
-  size: number;
   style: number;
 }
 
 export function Cam() {
-  const {
+  let {
     state,
     hoursSystem,
+    isCaps,
     cameraBrand,
     policierName,
     policeDepartement,
     policierBadgeNumber,
   }: Props = useContext(BodyCamContext);
+
+  if (isCaps) {
+    policeDepartement = policeDepartement.toUpperCase();
+    policierName = policierName.toUpperCase();
+    cameraBrand = cameraBrand.toUpperCase();
+  }
 
   return (
     <CamContent>

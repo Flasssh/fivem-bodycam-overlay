@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
+import { BodyCamContext } from '../../../context';
 import { Cam } from '../Cam';
 
 const HudContent = styled.div<HudStyle>`
-  min-width: 270px;
-  min-height: 100px;
-  max-width: 300px;
-  max-height: 150px;
-  width: 380px;
-  height: auto;
+  width: 270px;
+  height: 100px;
 
   opacity: 0.4;
   background: rgba(0, 0, 0, 0.1);
@@ -30,11 +27,7 @@ const HudContent = styled.div<HudStyle>`
 `;
 
 const HudCamContent = styled.div<HudStyle>`
-  min-width: 270px;
-  min-height: 100px;
-  max-width: 300px;
-  max-height: 150px;
-  width: 380px;
+  width: auto;
   height: auto;
 
   background: rgba(0, 0, 0, 0.2);
@@ -44,11 +37,13 @@ const HudCamContent = styled.div<HudStyle>`
   position: absolute;
   ${(props) => props.positionHorizontal}: 0;
   ${(props) => props.positionVertical}: 0;
+  font-size: ${(props) => props.size}px;
 `;
 
 type HudStyle = {
   positionVertical: string;
   positionHorizontal: string;
+  size?: number;
 };
 
 interface Props {
@@ -56,12 +51,19 @@ interface Props {
   isSelected: boolean;
 }
 
+interface PropsContext {
+  size: number;
+}
+
 export function Hud({ position, isSelected }: Props) {
+  const { size }: PropsContext = useContext(BodyCamContext);
+
   if (isSelected) {
     return (
       <HudCamContent
         positionVertical={position.split('-')[0]}
-        positionHorizontal={position.split('-')[1]}>
+        positionHorizontal={position.split('-')[1]}
+        size={size}>
         <Cam />
       </HudCamContent>
     );
