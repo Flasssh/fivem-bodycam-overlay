@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { useGlobalState } from '../../../../context';
+
 type TypeContent = {
   isOpen: boolean;
 };
@@ -65,7 +67,7 @@ export function Style() {
   const [stateAccordion, setStateAccordion] = useState(false);
   let icon = stateAccordion ? '-' : '+';
 
-  const [selectedOption, setSelectedOption] = useState(1);
+  const [state, dispatch] = useGlobalState();
 
   return (
     <StyleContent isOpen={stateAccordion}>
@@ -78,9 +80,10 @@ export function Style() {
           <StyleRadio
             type="radio"
             name="style"
-            checked={selectedOption === 1}
+            checked={state?.style === 1}
             onChange={() => {
-              setSelectedOption(1);
+              // @ts-ignore
+              dispatch({ style: 1 });
             }}
           />
           <StyledTemplate>1</StyledTemplate>
@@ -89,9 +92,10 @@ export function Style() {
           <StyleRadio
             type="radio"
             name="style"
-            checked={selectedOption === 2}
+            checked={state?.style === 2}
             onChange={() => {
-              setSelectedOption(2);
+              // @ts-ignore
+              dispatch({ style: 2 });
             }}
           />
           <StyledTemplate>2</StyledTemplate>
@@ -100,9 +104,10 @@ export function Style() {
           <StyleRadio
             type="radio"
             name="style"
-            checked={selectedOption === 3}
+            checked={state?.style === 3}
             onChange={() => {
-              setSelectedOption(3);
+              // @ts-ignore
+              dispatch({ style: 3 });
             }}
           />
           <StyledTemplate>3</StyledTemplate>
