@@ -1,6 +1,7 @@
 import faker from 'faker';
 import React from 'react';
 
+// Context Initial Value
 export type BodyCamContextType = {
   state: boolean;
   isPulse: boolean;
@@ -20,7 +21,7 @@ const generatedPolicierBageNuber = faker.datatype.number({
   max: 999,
 });
 
-export const BodyCamContext = React.createContext<BodyCamContextType>({
+let initialGlobalState = {
   state: true,
   isPulse: true,
   hoursSystem: true,
@@ -31,4 +32,34 @@ export const BodyCamContext = React.createContext<BodyCamContextType>({
   policeDepartement: 'LOS SANTOS POLICE DEPARTEMENT',
   size: 13,
   style: 2,
-});
+};
+
+export const BodyCamContext = React.createContext<BodyCamContextType>(initialGlobalState);
+export const DispatchBodyCamContext = React.createContext<BodyCamContextType | undefined>(
+  undefined,
+);
+
+// State, Dispatch
+
+interface Props {
+  children: React.ReactChild | React.ReactChildren;
+}
+
+export const GlobalProvider = ({ children }: Props) => {
+  const [state, dispatch] = React.useReducer(
+    (state: any, newValue: any) => ({ ...state, ...newValue }),
+    initialGlobalState,
+  );
+  return (
+    <BodyCamContext.Provider value={state}>
+      <DispatchBodyCamContext.Provider value={dispatch}>
+        {children}
+      </DispatchBodyCamContext.Provider>
+    </BodyCamContext.Provider>
+  );
+};
+
+export const useGlobalState = () => [
+  React.useContext(BodyCamContext),
+  React.useContext(DispatchBodyCamContext),
+];

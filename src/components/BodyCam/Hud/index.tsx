@@ -58,20 +58,29 @@ interface PropsContext {
 export function Hud({ position, isSelected }: Props) {
   const { size }: PropsContext = useContext(BodyCamContext);
 
+  let positionV = position.split('-')[0];
+  let positionH = position.split('-')[1];
+
+  const handleClick = () => {
+    console.log('Click: ', { positionV, positionH });
+  };
+
   if (isSelected) {
     return (
       <HudCamContent
-        positionVertical={position.split('-')[0]}
-        positionHorizontal={position.split('-')[1]}
+        positionVertical={positionV}
+        positionHorizontal={positionH}
         size={size}>
         <Cam />
       </HudCamContent>
     );
   }
+
   return (
     <HudContent
-      positionVertical={position.split('-')[0]}
-      positionHorizontal={position.split('-')[1]}
+      onClick={handleClick}
+      positionVertical={positionV}
+      positionHorizontal={positionH}
     />
   );
 }

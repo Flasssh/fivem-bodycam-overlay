@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Slider from 'react-input-slider';
 import styled from 'styled-components';
 
+import { useGlobalState } from '../../../../context';
+
 type TypeContent = {
   isOpen: boolean;
 };
@@ -59,10 +61,18 @@ export function Size() {
   const [stateAccordion, setStateAccordion] = useState(false);
   let icon = stateAccordion ? '-' : '+';
 
-  const [sizeValue, setSizeValue] = useState({ x: 14 });
-
   const MINIMUM_SIZE = 10;
   const MAXIMUM_SIZE = 21;
+
+  const [state, dispatch] = useGlobalState();
+
+  let prevX = state?.size;
+  const handleChangeSize = (x: number) => {
+    if (x != prevX) {
+      prevX = x;
+      dispatch({ size: x });
+    }
+  };
 
   return (
     <SizeContent isOpen={stateAccordion}>
@@ -73,9 +83,9 @@ export function Size() {
       <SizeBody>
         <SizeInformationSlider>{MINIMUM_SIZE}</SizeInformationSlider>
         <Slider
-          x={sizeValue.x}
+          x={state?.size}
           axis="x"
-          onChange={({ x }) => setSizeValue({ x })}
+          onChange={({ x }) => handleChangeSize(x)}
           xmax={MAXIMUM_SIZE}
           xmin={MINIMUM_SIZE}
           xstep={1}
