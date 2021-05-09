@@ -70,6 +70,7 @@ export function Size() {
   const handleChangeSize = (x: number) => {
     if (x != prevX) {
       prevX = x;
+      // @ts-ignore
       dispatch({ size: x });
     }
   };

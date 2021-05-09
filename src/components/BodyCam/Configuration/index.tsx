@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { GlobalProvider } from '../../../context';
 import { CreateLink } from './CreateLink';
 import { Option } from './Option/index';
 import { Size } from './Size';
@@ -19,14 +18,12 @@ const ConfigurationContent = styled.div`
 
 export function Configuration() {
   return (
-    <GlobalProvider>
-      <ConfigurationContent>
-        <Option />
-        <TextField />
-        <Size />
-        <Style />
-        <CreateLink />
-      </ConfigurationContent>
-    </GlobalProvider>
+    <ConfigurationContent>
+      <Option />
+      <TextField />
+      <Size />
+      <Style />
+      <CreateLink />
+    </ConfigurationContent>
   );
 }
