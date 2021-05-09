@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { useGlobalState } from '../../../../context';
+
 type TypeContent = {
   isOpen: boolean;
 };
@@ -69,10 +71,7 @@ export function TextField() {
   const [stateAccordion, setStateAccordion] = useState(false);
   let icon = stateAccordion ? '-' : '+';
 
-  const [cameraBrandValue, setCameraBrandValue] = useState('');
-  const [policierNameValue, setPolicierNameValue] = useState('');
-  const [policeBadgeNumber, setPoliceBadgeNumber] = useState('');
-  const [policeDepartement, setPoliceDepartement] = useState('');
+  const [state, dispatch] = useGlobalState();
 
   return (
     <TextFieldContent isOpen={stateAccordion}>
@@ -83,26 +82,30 @@ export function TextField() {
       <TextFieldBody>
         <TextFieldInput
           type="text"
-          value={cameraBrandValue}
-          onChange={(e) => setCameraBrandValue(e.target.value)}
+          value={state?.cameraBrand}
+          // @ts-ignore
+          onChange={(e) => dispatch({ cameraBrand: e.target.value })}
           placeholder="Camera Brand"
         />
         <TextFieldInput
           type="text"
-          value={policierNameValue}
-          onChange={(e) => setPolicierNameValue(e.target.value)}
+          value={state?.policierName}
+          // @ts-ignore
+          onChange={(e) => dispatch({ policierName: e.target.value })}
           placeholder="Policier Name"
         />
         <TextFieldInput
-          type="text"
-          value={policeBadgeNumber}
-          onChange={(e) => setPoliceBadgeNumber(e.target.value)}
+          type="number"
+          value={state?.policierBadgeNumber}
+          // @ts-ignore
+          onChange={(e) => dispatch({ policierBadgeNumber: e.target.value })}
           placeholder="Policier Badge"
         />
         <TextFieldInput
           type="text"
-          value={policeDepartement}
-          onChange={(e) => setPoliceDepartement(e.target.value)}
+          value={state?.policeDepartement}
+          // @ts-ignore
+          onChange={(e) => dispatch({ policeDepartement: e.target.value })}
           placeholder="Police Departement"
         />
       </TextFieldBody>
