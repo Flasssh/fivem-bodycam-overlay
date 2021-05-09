@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { CreateLink } from './CreateLink';
 import { Option } from './Option/index';
 import { Size } from './Size';
-import { Style } from './Style';
 import { TextField } from './TextField';
 
 const ConfigurationContent = styled.div`
@@ -22,7 +21,6 @@ export function Configuration() {
       <Option />
       <TextField />
       <Size />
-      <Style />
       <CreateLink />
     </ConfigurationContent>
   );

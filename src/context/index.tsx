@@ -17,7 +17,6 @@ export type BodyCamContextType = {
   // number
   policierBadgeNumber: number;
   size: number;
-  style: number;
 };
 
 const generatedPolicierName = faker.name.findName();
@@ -36,7 +35,6 @@ let initialGlobalState = {
   policierBadgeNumber: generatedPolicierBageNuber,
   policeDepartement: 'LOS SANTOS POLICE DEPARTEMENT',
   size: 13,
-  style: 2,
   position: 'top-left',
   textAlign: 'right',
 };

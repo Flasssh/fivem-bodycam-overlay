@@ -5,6 +5,8 @@ interface Props {
 }
 
 export function Time({ twelveHoursSys }: Props) {
+  // TODO: faire ne sorte que le texte de l'heure soit plus lisible
+
   const [now, setDate] = useState(new Date());
 
   let monthNames = [
