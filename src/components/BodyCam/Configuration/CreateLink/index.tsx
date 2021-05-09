@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useCookies } from 'react-cookie';
 import toast from 'react-hot-toast';
 import styled from 'styled-components';
 import { useClipboard } from 'use-clipboard-copy';
 
-import { BodyCamContext } from '../../../../context';
+import { useGlobalState } from '../../../../context';
 
 const Link = styled.button`
   background: #a30036;
@@ -42,34 +43,89 @@ const LinkFront = styled.span`
 const LinkContent = styled.div`
   width: 100%;
   margin-top: 36px;
+  display: flex;
 `;
 
-interface PropsContext {
-  state: boolean;
-}
+const LinkContentCopy = styled.div`
+  width: calc(70% - 10px);
+  margin-right: 10px;
+`;
+
+const LinkContentSave = styled.div`
+  width: calc(30% - 10px);
+  margin-left: 10px;
+`;
 
 export function CreateLink() {
   const clipboard = useClipboard();
-  let { state }: PropsContext = useContext(BodyCamContext);
+
+  const [state] = useGlobalState();
+  const [cookies, setCookie] = useCookies(['data']);
 
   const handleClick = () => {
     if (clipboard.isSupported()) {
       // TODO: recupt context
 
-      clipboard.copy(`https://localhost:3000/${state}`);
+      clipboard.copy(`https://localhost:3000/}`);
       toast.success('Successfully copied!');
     } else {
       toast.error('We can\t copy on the clipboard');
     }
   };
 
+  const handleCookieSave = async () => {
+    return new Promise((res, rej) => {
+      if (!state) {
+        rej('Could not get the configuration.');
+      }
+
+      setCookie('data', state, {
+        path: '/',
+        secure: true,
+        sameSite: true,
+      });
+
+      let attemps = 0;
+      setInterval(() => {
+        if (attemps >= 5) {
+          rej('Could not save.');
+        }
+
+        if (!cookies.data) {
+          attemps++;
+        }
+
+        if (cookies.data) {
+          res('Configuration saved!');
+        }
+      }, 1000);
+    });
+  };
+
+  const handleClickSave = () => {
+    toast.promise(handleCookieSave(), {
+      loading: 'Saving...',
+      success: <b>Configuration saved!</b>,
+      error: <b>Could not save.</b>,
+    });
+  };
+
   return (
     <LinkContent>
-      <Link>
-        <LinkFront onClick={handleClick} className="front">
-          Copiez le lien.
-        </LinkFront>
-      </Link>
+      <LinkContentCopy>
+        <Link>
+          <LinkFront onClick={handleClick} className="front">
+            Copy Link.
+          </LinkFront>
+        </Link>
+      </LinkContentCopy>
+      <LinkContentSave>
+        <Link>
+          <LinkFront onClick={handleClickSave} className="front">
+            Save config.
+          </LinkFront>
+        </Link>
+      </LinkContentSave>
     </LinkContent>
   );
 }
