@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Checkbox from 'react-custom-checkbox';
 import styled from 'styled-components';
 
-import { BodyCamContext } from '../../../../context';
+import { useGlobalState } from '../../../../context';
 
 type TypeContent = {
   isOpen: boolean;
@@ -52,17 +52,8 @@ const Icon = styled.span`
   line-height: 27px;
 `;
 
-interface PropsContext {
-  state: boolean;
-}
-
 export function Option() {
-  let { state }: PropsContext = useContext(BodyCamContext);
-
-  const [camState, setState] = useState(state);
-  const [hoursSystem, setHoursSystem] = useState(false);
-  const [isCaps, setCaps] = useState(false);
-  const [recPulse, setRecPulse] = useState(true);
+  const [state, dispatch] = useGlobalState();
 
   const [stateAccordion, setStateAccordion] = useState(false);
 
@@ -79,9 +70,9 @@ export function Option() {
           <Checkbox
             label="ON/OFF"
             name="CamState"
-            checked={camState}
+            checked={state?.state}
             onChange={(value: boolean) => {
-              setState(value);
+              dispatch({ state: value });
             }}
             icon={
               <svg
@@ -101,9 +92,9 @@ export function Option() {
           <Checkbox
             label="Rec Pulse"
             name="recPulse"
-            checked={recPulse}
+            checked={state?.isPulse}
             onChange={(value: boolean) => {
-              setRecPulse(value);
+              dispatch({ isPulse: value });
             }}
             icon={
               <svg
@@ -123,9 +114,9 @@ export function Option() {
           <Checkbox
             label="12H/24H"
             name="hoursSystem"
-            checked={hoursSystem}
+            checked={state?.hoursSystem}
             onChange={(value: boolean) => {
-              setHoursSystem(value);
+              dispatch({ hoursSystem: value });
             }}
             icon={
               <svg
@@ -145,9 +136,9 @@ export function Option() {
           <Checkbox
             label="FULL CAPS"
             name="fullCaps"
-            checked={isCaps}
+            checked={state?.isCaps}
             onChange={(value: boolean) => {
-              setCaps(value);
+              dispatch({ isCaps: value });
             }}
             icon={
               <svg
