@@ -4,6 +4,17 @@ import styled from 'styled-components';
 import { useGlobalState } from '../../../context';
 import { Cam } from '../Cam';
 
+type HudStyle = {
+  positionVertical: string;
+  positionHorizontal: string;
+  textAlign?: string;
+  size?: number;
+};
+
+interface Props {
+  position: string;
+}
+
 const HudContent = styled.div<HudStyle>`
   width: 270px;
   height: 100px;
@@ -30,6 +41,7 @@ const HudCamContent = styled.div<HudStyle>`
   width: auto;
   height: auto;
 
+  cursor: pointer;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   box-sizing: border-box;
@@ -38,17 +50,13 @@ const HudCamContent = styled.div<HudStyle>`
   ${(props) => props.positionHorizontal}: 0;
   ${(props) => props.positionVertical}: 0;
   font-size: ${(props) => props.size}px;
+  text-align: ${(props) => props.textAlign};
+
+  & > div > div {
+    justify-content: ${(props) =>
+      props.textAlign === 'right' ? 'flex-end' : 'flex-start'};
+  }
 `;
-
-type HudStyle = {
-  positionVertical: string;
-  positionHorizontal: string;
-  size?: number;
-};
-
-interface Props {
-  position: string;
-}
 
 export function Hud({ position }: Props) {
   const [state, dispatch] = useGlobalState();
@@ -62,9 +70,15 @@ export function Hud({ position }: Props) {
   let positionV = position.split('-')[0];
   let positionH = position.split('-')[1];
 
-  const handleClick = () => {
+  const handleClickSelected = () => {
     // @ts-ignore
     dispatch({ position });
+  };
+
+  const handleClickIsNotSelected = () => {
+    let nextTextAlign = state?.textAlign === 'left' ? 'right' : 'left';
+    // @ts-ignore
+    dispatch({ textAlign: nextTextAlign });
   };
 
   if (isSelected) {
@@ -72,6 +86,8 @@ export function Hud({ position }: Props) {
       <HudCamContent
         positionVertical={positionV}
         positionHorizontal={positionH}
+        onClick={handleClickIsNotSelected}
+        textAlign={state?.textAlign}
         size={state?.size}>
         <Cam />
       </HudCamContent>
@@ -80,7 +96,7 @@ export function Hud({ position }: Props) {
 
   return (
     <HudContent
-      onClick={handleClick}
+      onClick={handleClickSelected}
       positionVertical={positionV}
       positionHorizontal={positionH}
     />

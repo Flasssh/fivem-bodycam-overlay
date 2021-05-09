@@ -3,17 +3,21 @@ import React from 'react';
 
 // Context Initial Value
 export type BodyCamContextType = {
+  // Boolean
   state: boolean;
   isPulse: boolean;
   hoursSystem: boolean;
   isCaps: boolean;
+  // String
   cameraBrand: string;
   policierName: string;
-  policierBadgeNumber: number;
   policeDepartement: string;
+  position: string;
+  textAlign: string;
+  // number
+  policierBadgeNumber: number;
   size: number;
   style: number;
-  position: string;
 };
 
 const generatedPolicierName = faker.name.findName();
@@ -34,6 +38,7 @@ let initialGlobalState = {
   size: 13,
   style: 2,
   position: 'top-left',
+  textAlign: 'right',
 };
 
 export const BodyCamContext = React.createContext<BodyCamContextType>(initialGlobalState);

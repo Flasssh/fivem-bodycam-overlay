@@ -20,8 +20,6 @@ const PreviewContentBorder = styled.div`
 `;
 
 export function Preview() {
-  // const [state, dispatch] = useGlobalState();
-
   return (
     <PreviewContent>
       <PreviewContentBorder>

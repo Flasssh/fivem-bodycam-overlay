@@ -52,14 +52,14 @@ const Icon = styled.span`
   line-height: 27px;
 `;
 
-const Separation = styled.hr`
-  margin: 12px 0 14px 0;
-`;
+// const Separation = styled.hr`
+//   margin: 12px 0 14px 0;
+// `;
 
 export function Option() {
   const [state, dispatch] = useGlobalState();
 
-  const [stateAccordion, setStateAccordion] = useState(false);
+  const [stateAccordion, setStateAccordion] = useState(true);
 
   let icon = stateAccordion ? '-' : '+';
 
@@ -166,7 +166,7 @@ export function Option() {
             labelStyle={{ marginLeft: 5, userSelect: 'none' }}
           />
         </OptionCheckbox>
-        <Separation />
+        {/* <Separation /> */}
       </OptionBody>
     </OptionContent>
   );
