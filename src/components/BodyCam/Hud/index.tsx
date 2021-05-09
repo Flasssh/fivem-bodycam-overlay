@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { BodyCamContext } from '../../../context';
+import { useGlobalState } from '../../../context';
 import { Cam } from '../Cam';
 
 const HudContent = styled.div<HudStyle>`
@@ -48,21 +48,23 @@ type HudStyle = {
 
 interface Props {
   position: string;
-  isSelected: boolean;
 }
 
-interface PropsContext {
-  size: number;
-}
+export function Hud({ position }: Props) {
+  const [state, dispatch] = useGlobalState();
 
-export function Hud({ position, isSelected }: Props) {
-  const { size }: PropsContext = useContext(BodyCamContext);
+  let isSelected;
+
+  if (state?.position === position) {
+    isSelected = true;
+  }
 
   let positionV = position.split('-')[0];
   let positionH = position.split('-')[1];
 
   const handleClick = () => {
-    console.log('Click: ', { positionV, positionH });
+    // @ts-ignore
+    dispatch({ position });
   };
 
   if (isSelected) {
@@ -70,7 +72,7 @@ export function Hud({ position, isSelected }: Props) {
       <HudCamContent
         positionVertical={positionV}
         positionHorizontal={positionH}
-        size={size}>
+        size={state?.size}>
         <Cam />
       </HudCamContent>
     );

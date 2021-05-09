@@ -20,13 +20,15 @@ const PreviewContentBorder = styled.div`
 `;
 
 export function Preview() {
+  // const [state, dispatch] = useGlobalState();
+
   return (
     <PreviewContent>
       <PreviewContentBorder>
-        <Hud isSelected={true} position={'top-left'} />
-        <Hud isSelected={false} position={'top-right'} />
-        <Hud isSelected={false} position={'bottom-left'} />
-        <Hud isSelected={false} position={'bottom-right'} />
+        <Hud position={'top-left'} />
+        <Hud position={'top-right'} />
+        <Hud position={'bottom-left'} />
+        <Hud position={'bottom-right'} />
       </PreviewContentBorder>
     </PreviewContent>
   );

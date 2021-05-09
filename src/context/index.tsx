@@ -13,6 +13,7 @@ export type BodyCamContextType = {
   policeDepartement: string;
   size: number;
   style: number;
+  position: string;
 };
 
 const generatedPolicierName = faker.name.findName();
@@ -32,6 +33,7 @@ let initialGlobalState = {
   policeDepartement: 'LOS SANTOS POLICE DEPARTEMENT',
   size: 13,
   style: 2,
+  position: 'top-left',
 };
 
 export const BodyCamContext = React.createContext<BodyCamContextType>(initialGlobalState);

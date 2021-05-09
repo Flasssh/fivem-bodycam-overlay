@@ -52,12 +52,18 @@ const Icon = styled.span`
   line-height: 27px;
 `;
 
+const Separation = styled.hr`
+  margin: 12px 0 14px 0;
+`;
+
 export function Option() {
   const [state, dispatch] = useGlobalState();
 
   const [stateAccordion, setStateAccordion] = useState(false);
 
   let icon = stateAccordion ? '-' : '+';
+
+  // TODO: Faire après la séparation le faite de pouvoir changer entre aligné à gauche ou droite
 
   return (
     <OptionContent isOpen={stateAccordion}>
@@ -72,6 +78,7 @@ export function Option() {
             name="CamState"
             checked={state?.state}
             onChange={(value: boolean) => {
+              // @ts-ignore
               dispatch({ state: value });
             }}
             icon={
@@ -94,6 +101,7 @@ export function Option() {
             name="recPulse"
             checked={state?.isPulse}
             onChange={(value: boolean) => {
+              // @ts-ignore
               dispatch({ isPulse: value });
             }}
             icon={
@@ -116,6 +124,7 @@ export function Option() {
             name="hoursSystem"
             checked={state?.hoursSystem}
             onChange={(value: boolean) => {
+              // @ts-ignore
               dispatch({ hoursSystem: value });
             }}
             icon={
@@ -138,6 +147,7 @@ export function Option() {
             name="fullCaps"
             checked={state?.isCaps}
             onChange={(value: boolean) => {
+              // @ts-ignore
               dispatch({ isCaps: value });
             }}
             icon={
@@ -156,6 +166,7 @@ export function Option() {
             labelStyle={{ marginLeft: 5, userSelect: 'none' }}
           />
         </OptionCheckbox>
+        <Separation />
       </OptionBody>
     </OptionContent>
   );
