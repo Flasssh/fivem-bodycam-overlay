@@ -65,6 +65,7 @@ if (checkIfCookieValid(cookieData)) {
   };
 }
 
+// @ts-ignore
 export const BodyCamContext = React.createContext<BodyCamContextType>(initialGlobalState);
 export const DispatchBodyCamContext = React.createContext<BodyCamContextType | undefined>(
   undefined,
