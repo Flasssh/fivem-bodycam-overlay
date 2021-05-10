@@ -1,10 +1,7 @@
 import React from 'react';
-import { useCookies } from 'react-cookie';
 import toast from 'react-hot-toast';
 import styled from 'styled-components';
 import { useClipboard } from 'use-clipboard-copy';
-
-import { useGlobalState } from '../../../../context';
 
 const Link = styled.button`
   background: #a30036;
@@ -47,20 +44,12 @@ const LinkContent = styled.div`
 `;
 
 const LinkContentCopy = styled.div`
-  width: calc(70% - 10px);
+  width: 100%;
   margin-right: 10px;
-`;
-
-const LinkContentSave = styled.div`
-  width: calc(30% - 10px);
-  margin-left: 10px;
 `;
 
 export function CreateLink() {
   const clipboard = useClipboard();
-
-  const [state] = useGlobalState();
-  const [cookies, setCookie] = useCookies(['data']);
 
   const handleClick = () => {
     if (clipboard.isSupported()) {
@@ -73,43 +62,6 @@ export function CreateLink() {
     }
   };
 
-  const handleCookieSave = async () => {
-    return new Promise((res, rej) => {
-      if (!state) {
-        rej('Could not get the configuration.');
-      }
-
-      setCookie('data', state, {
-        path: '/',
-        secure: true,
-        sameSite: true,
-      });
-
-      let attemps = 0;
-      setInterval(() => {
-        if (attemps >= 5) {
-          rej('Could not save.');
-        }
-
-        if (!cookies.data) {
-          attemps++;
-        }
-
-        if (cookies.data) {
-          res('Configuration saved!');
-        }
-      }, 1000);
-    });
-  };
-
-  const handleClickSave = () => {
-    toast.promise(handleCookieSave(), {
-      loading: 'Saving...',
-      success: <b>Configuration saved!</b>,
-      error: <b>Could not save.</b>,
-    });
-  };
-
   return (
     <LinkContent>
       <LinkContentCopy>
@@ -119,13 +71,6 @@ export function CreateLink() {
           </LinkFront>
         </Link>
       </LinkContentCopy>
-      <LinkContentSave>
-        <Link>
-          <LinkFront onClick={handleClickSave} className="front">
-            Save config.
-          </LinkFront>
-        </Link>
-      </LinkContentSave>
     </LinkContent>
   );
 }

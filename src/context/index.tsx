@@ -26,44 +26,25 @@ const generatedPolicierBageNuber = faker.datatype.number({
   max: 999,
 });
 
-let initialGlobalState = {};
 let cookieData;
-
-console.log(!document.cookie);
 
 if (document.cookie) {
   cookieData = JSON.parse(decodeURIComponent(document.cookie).substring(5));
 }
 
-if (checkIfCookieValid(cookieData)) {
-  initialGlobalState = {
-    state: cookieData.state || true,
-    isPulse: cookieData.isPulse || true,
-    hoursSystem: cookieData.hoursSystem || true,
-    isCaps: cookieData.isCaps || true,
-    cameraBrand: cookieData.cameraBrand || 'XION DASCHCAM',
-    policierName: cookieData.policierName || generatedPolicierName,
-    policierBadgeNumber: cookieData.policierBadgeNumber || generatedPolicierBageNuber,
-    policeDepartement: cookieData.policeDepartement || 'LOS SANTOS POLICE DEPARTEMENT',
-    size: cookieData.size || 13,
-    position: cookieData.position || 'top-left',
-    textAlign: cookieData.textAlign || 'right',
-  };
-} else {
-  initialGlobalState = {
-    state: true,
-    isPulse: true,
-    hoursSystem: true,
-    isCaps: true,
-    cameraBrand: 'XION DASCHCAM',
-    policierName: generatedPolicierName,
-    policierBadgeNumber: generatedPolicierBageNuber,
-    policeDepartement: 'LOS SANTOS POLICE DEPARTEMENT',
-    size: 13,
-    position: 'top-left',
-    textAlign: 'right',
-  };
-}
+let initialGlobalState = {
+  state: cookieData.state || true,
+  isPulse: cookieData.isPulse || true,
+  hoursSystem: cookieData.hoursSystem || true,
+  isCaps: cookieData.isCaps || true,
+  cameraBrand: cookieData.cameraBrand || 'XION DASCHCAM',
+  policierName: cookieData.policierName || generatedPolicierName,
+  policierBadgeNumber: cookieData.policierBadgeNumber || generatedPolicierBageNuber,
+  policeDepartement: cookieData.policeDepartement || 'LOS SANTOS POLICE DEPARTEMENT',
+  size: cookieData.size || 13,
+  position: cookieData.position || 'top-left',
+  textAlign: cookieData.textAlign || 'right',
+};
 
 // @ts-ignore
 export const BodyCamContext = React.createContext<BodyCamContextType>(initialGlobalState);
@@ -95,12 +76,3 @@ export const useGlobalState = () => [
   React.useContext(BodyCamContext),
   React.useContext(DispatchBodyCamContext),
 ];
-
-// Function
-function checkIfCookieValid(cookieData: object) {
-  if (!cookieData) {
-    return false;
-  }
-
-  return true;
-}
