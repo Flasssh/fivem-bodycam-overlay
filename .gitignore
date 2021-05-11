@@ -7,3 +7,6 @@ node_modules/*
 /.idea/
 /src/style/tailwind/tailwind.output.css
 /dist
+/package-lock.json
+/yarn-error.log
+/yarn.lock
