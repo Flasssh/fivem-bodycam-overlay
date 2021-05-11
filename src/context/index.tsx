@@ -1,3 +1,4 @@
+import cookie from 'cookie';
 import faker from 'faker';
 import React from 'react';
 
@@ -26,24 +27,26 @@ const generatedPolicierBageNuber = faker.datatype.number({
   max: 999,
 });
 
-let cookieData;
-
+let cookieData = null;
 if (document.cookie) {
-  cookieData = JSON.parse(decodeURIComponent(document.cookie).substring(5));
+  let cookieParse = cookie.parse(document.cookie);
+  if (cookieParse.data && cookieParse.data != 'undefined') {
+    cookieData = JSON.parse(cookieParse.data);
+  }
 }
 
 let initialGlobalState = {
-  state: cookieData.state || true,
-  isPulse: cookieData.isPulse || true,
-  hoursSystem: cookieData.hoursSystem || true,
-  isCaps: cookieData.isCaps || true,
-  cameraBrand: cookieData.cameraBrand || 'XION DASCHCAM',
-  policierName: cookieData.policierName || generatedPolicierName,
-  policierBadgeNumber: cookieData.policierBadgeNumber || generatedPolicierBageNuber,
-  policeDepartement: cookieData.policeDepartement || 'LOS SANTOS POLICE DEPARTEMENT',
-  size: cookieData.size || 13,
-  position: cookieData.position || 'top-left',
-  textAlign: cookieData.textAlign || 'right',
+  state: cookieData?.state || true,
+  isPulse: cookieData?.isPulse || true,
+  hoursSystem: cookieData?.hoursSystem || true,
+  isCaps: cookieData?.isCaps || true,
+  cameraBrand: cookieData?.cameraBrand || 'XION DASCHCAM',
+  policierName: cookieData?.policierName || generatedPolicierName,
+  policierBadgeNumber: cookieData?.policierBadgeNumber || generatedPolicierBageNuber,
+  policeDepartement: cookieData?.policeDepartement || 'LOS SANTOS POLICE DEPARTEMENT',
+  size: cookieData?.size || 13,
+  position: cookieData?.position || 'top-left',
+  textAlign: cookieData?.textAlign || 'right',
 };
 
 // @ts-ignore

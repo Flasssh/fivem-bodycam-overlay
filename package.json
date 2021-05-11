@@ -13,10 +13,13 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.0.0",
+    "@types/moment": "^2.13.0",
     "autoprefixer": "^10.2.5",
     "chokidar-cli": "^2.1.0",
+    "cookie": "^0.4.1",
     "faker": "^5.5.3",
     "formik": "^2.2.6",
+    "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "query-string": "^7.0.0",
@@ -36,10 +39,12 @@
     "use-clipboard-copy": "^0.2.0"
   },
   "devDependencies": {
+    "@types/cookie": "^0.4.0",
     "@types/faker": "^5.5.4",
     "@types/node-sass": "^4.11.1",
     "@types/query-string": "^6.3.0",
     "@types/react": "^17.0.5",
+    "@types/react-cookies": "^0.1.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-select": "^4.0.15",
