@@ -3,6 +3,7 @@ import Checkbox from 'react-custom-checkbox';
 import styled from 'styled-components';
 
 import { useGlobalState } from '../../../../context';
+import { ChangeColor } from '../ChangeColor';
 
 type TypeContent = {
   isOpen: boolean;
@@ -52,9 +53,24 @@ const Icon = styled.span`
   line-height: 27px;
 `;
 
-// const Separation = styled.hr`
-//   margin: 12px 0 14px 0;
-// `;
+const Separation = styled.hr`
+  margin: 12px 0 14px 0;
+`;
+
+const ChangeColorSection = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+const ChangeColorGroup = styled.div`
+  display: flex;
+  line-height: 24px;
+
+  & > div {
+    margin-left: 10px;
+  }
+`;
 
 export function Option() {
   const [state, dispatch] = useGlobalState();
@@ -166,7 +182,13 @@ export function Option() {
             labelStyle={{ marginLeft: 5, userSelect: 'none' }}
           />
         </OptionCheckbox>
-        {/* <Separation /> */}
+        <Separation />
+        <ChangeColorSection>
+          <ChangeColorGroup>
+            <span>Changer la couleur du fond: </span>
+            <ChangeColor />
+          </ChangeColorGroup>
+        </ChangeColorSection>
       </OptionBody>
     </OptionContent>
   );

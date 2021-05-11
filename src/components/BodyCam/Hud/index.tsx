@@ -9,6 +9,7 @@ type HudStyle = {
   positionHorizontal: string;
   textAlign?: string;
   size?: number;
+  colors?: { r: number; g: number; b: number; a: number };
 };
 
 interface Props {
@@ -42,7 +43,8 @@ const HudCamContent = styled.div<HudStyle>`
   height: auto;
 
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.2);
+  background: ${({ colors }) =>
+    `rgba(${colors.r}, ${colors.g}, ${colors.b}, ${colors.a})`};
   border-radius: 6px;
   box-sizing: border-box;
   user-select: none;
@@ -88,7 +90,8 @@ export function Hud({ position }: Props) {
         positionHorizontal={positionH}
         onClick={handleClickIsNotSelected}
         textAlign={state?.textAlign}
-        size={state?.size}>
+        size={state?.size}
+        colors={state?.backgroundColor}>
         <Cam />
       </HudCamContent>
     );

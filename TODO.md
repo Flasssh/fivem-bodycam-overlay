@@ -1,9 +1,6 @@
 # TODO LIST:
 
-- Pouvoir changer la taille du texte et de l'hud
-- Ajout de différent style de bodycamm
 - Pouvoir changer les couleurs
-- Pouvoir importer une image pour pouvoir voir comment cela rends
 - Bien optimiser pour OBS
 - Essayer de voir si je peux faire télécharger une préconfiguration de OBS
 

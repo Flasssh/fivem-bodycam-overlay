@@ -18,6 +18,9 @@ export type BodyCamContextType = {
   // number
   policierBadgeNumber: number;
   size: number;
+
+  // Object
+  backgroundColor: { r: number; g: number; b: number; a: number };
 };
 
 // Generated random
@@ -47,6 +50,7 @@ let initialGlobalState = {
   size: cookieData?.size || 13,
   position: cookieData?.position || 'top-left',
   textAlign: cookieData?.textAlign || 'right',
+  backgroundColor: cookieData?.backgroundColor || { r: 0, g: 0, b: 0, a: 0.2 },
 };
 
 // @ts-ignore
