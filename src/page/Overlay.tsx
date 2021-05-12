@@ -6,7 +6,6 @@ interface Props {
 }
 
 export function Overlay({ location }: Props) {
-  // eslint-disable-next-line no-unused-vars
   let parsed = queryString.parse(location.search, {
     parseBooleans: true,
     parseNumbers: true,

@@ -34,7 +34,6 @@ interface Props {
   policierName: string;
   policeDepartement: string;
   policierBadgeNumber: number;
-  style: number;
   isPulse: boolean;
 }
 
