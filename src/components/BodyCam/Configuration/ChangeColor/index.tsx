@@ -22,7 +22,13 @@ const Popover = styled.div`
   z-index: 2;
 `;
 
-const Cover = styled.div``;
+const Cover = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`;
 
 const ColorShow = styled.div<ColorShowType>`
   width: 36px;
@@ -53,9 +59,8 @@ export function ChangeColor() {
       </Swatch>
       {displayColorPicker ? (
         <Popover>
-          <Cover onClick={handleClick}>
-            <SketchPicker color={state?.backgroundColor} onChange={handleSetColor} />
-          </Cover>
+          <Cover onClick={handleClick} />
+          <SketchPicker color={state?.backgroundColor} onChange={handleSetColor} />
         </Popover>
       ) : null}
     </div>
