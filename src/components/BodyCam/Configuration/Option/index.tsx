@@ -111,6 +111,29 @@ export function Option() {
             labelStyle={{ marginLeft: 5, userSelect: 'none' }}
           />
           <Checkbox
+            label="TIMEZONE"
+            name="timezone"
+            checked={state?.showTimeZone}
+            onChange={(value: boolean) => {
+              // @ts-ignore
+              dispatch({ showTimeZone: value });
+            }}
+            icon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="11"
+                viewBox="0 0 12 11"
+                fill="none">
+                <path d="M1 7L4.5 9.5L11 1" stroke="white" strokeWidth="2" />
+              </svg>
+            }
+            borderColor="#0B1220"
+            borderRadius={0}
+            style={{ cursor: 'pointer' }}
+            labelStyle={{ marginLeft: 5, userSelect: 'none' }}
+          />
+          <Checkbox
             label="Rec Pulse"
             name="recPulse"
             checked={state?.isPulse}

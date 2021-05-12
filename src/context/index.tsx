@@ -9,12 +9,15 @@ export type BodyCamContextType = {
   isPulse: boolean;
   hoursSystem: boolean;
   isCaps: boolean;
+  showTimeZone: boolean;
+
   // String
   cameraBrand: string;
   policierName: string;
   policeDepartement: string;
   position: string;
   textAlign: string;
+
   // number
   policierBadgeNumber: number;
   size: number;
@@ -43,6 +46,7 @@ let initialGlobalState = {
   isPulse: cookieData?.isPulse || true,
   hoursSystem: cookieData?.hoursSystem || true,
   isCaps: cookieData?.isCaps || true,
+  showTimeZone: cookieData?.showTimeZone || true,
   cameraBrand: cookieData?.cameraBrand || 'XION DASCHCAM',
   policierName: cookieData?.policierName || generatedPolicierName,
   policierBadgeNumber: cookieData?.policierBadgeNumber || generatedPolicierBageNuber,

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { useGlobalState } from '../../../context';
+
 interface Props {
   twelveHoursSys: boolean;
 }
@@ -8,6 +10,7 @@ export function Time({ twelveHoursSys }: Props) {
   // TODO: faire ne sorte que le texte de l'heure soit plus lisible
 
   const [now, setDate] = useState(new Date());
+  const [state] = useGlobalState();
 
   let monthNames = [
     'JAN',
@@ -43,6 +46,9 @@ export function Time({ twelveHoursSys }: Props) {
   let minutes = now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
   let seconds = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
 
+  // TimeZone
+  let timezone = new Date().getTimezoneOffset() / -60;
+
   let currentTime;
   if (twelveHoursSys) {
     let aMpM = hours >= 12 ? 'PM' : 'AM';
@@ -52,5 +58,10 @@ export function Time({ twelveHoursSys }: Props) {
   } else {
     currentTime = `${date} ${monthNames[month]} ${year} ${hours}:${minutes}:${seconds}`;
   }
+
+  if (state?.showTimeZone) {
+    currentTime += ` GMT+${timezone}`;
+  }
+
   return <div>{currentTime}</div>;
 }
