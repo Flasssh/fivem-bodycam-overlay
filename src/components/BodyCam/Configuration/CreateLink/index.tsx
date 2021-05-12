@@ -1,7 +1,10 @@
+import queryString from 'query-string';
 import React from 'react';
 import toast from 'react-hot-toast';
 import styled from 'styled-components';
 import { useClipboard } from 'use-clipboard-copy';
+
+import { useGlobalState } from '../../../../context';
 
 const Link = styled.button`
   background: #a30036;
@@ -45,17 +48,33 @@ const LinkContent = styled.div`
 
 const LinkContentCopy = styled.div`
   width: 100%;
-  margin-right: 10px;
 `;
 
 export function CreateLink() {
   const clipboard = useClipboard();
+  let [state]: any = useGlobalState();
 
   const handleClick = () => {
     if (clipboard.isSupported()) {
       // TODO: recupt context
 
-      clipboard.copy(`https://localhost:3000/}`);
+      let copyObject = new Object();
+      Object.assign(copyObject, state);
+
+      // @ts-ignore
+      copyObject.colorR = state?.backgroundColor.r;
+      // @ts-ignore
+      copyObject.colorG = state?.backgroundColor.g;
+      // @ts-ignore
+      copyObject.colorB = state?.backgroundColor.b;
+      // @ts-ignore
+      copyObject.colorA = state?.backgroundColor.a;
+      // @ts-ignore
+      delete copyObject?.backgroundColor;
+
+      let params = queryString.stringify(copyObject);
+
+      clipboard.copy(`http://localhost:3000/overlay/?${params}`);
       toast.success('Successfully copied!');
     } else {
       toast.error('We can\t copy on the clipboard');

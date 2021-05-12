@@ -12,5 +12,7 @@ export function Overlay({ location }: Props) {
     parseNumbers: true,
   });
 
+  console.log(parsed);
+
   return <div></div>;
 }

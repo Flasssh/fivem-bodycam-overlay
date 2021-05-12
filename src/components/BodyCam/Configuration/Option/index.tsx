@@ -79,8 +79,6 @@ export function Option() {
 
   let icon = stateAccordion ? '-' : '+';
 
-  // TODO: Faire après la séparation le faite de pouvoir changer entre aligné à gauche ou droite
-
   return (
     <OptionContent isOpen={stateAccordion}>
       <OptionHeader onClick={() => setStateAccordion(!stateAccordion)}>
