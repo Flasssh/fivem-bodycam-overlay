@@ -7,7 +7,8 @@ interface Props {
 }
 
 export function Time({ twelveHoursSys }: Props) {
-  // TODO: faire ne sorte que le texte de l'heure soit plus lisible
+  // TODO: Faire ne sorte que le texte de l'heure soit plus lisible
+  // TODO: Faire en sorte que quand le temp < 10 affiche un 0 avant pour l'affichage 12h
 
   const [now, setDate] = useState(new Date());
   const [state] = useGlobalState();
