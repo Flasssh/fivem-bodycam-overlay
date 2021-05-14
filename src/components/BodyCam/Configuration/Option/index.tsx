@@ -206,7 +206,7 @@ export function Option() {
         <Separation />
         <ChangeColorSection>
           <ChangeColorGroup>
-            <span>Changer la couleur du fond: </span>
+            <span>BACKGROUND COLOR: </span>
             <ChangeColor />
           </ChangeColorGroup>
         </ChangeColorSection>
