@@ -11,7 +11,9 @@ const TimeText = styled.span<timeTextType>`
   margin: 0;
   padding: 0;
   width: ${(props) =>
-    props.minWidth ? `${props.minWidth}px; display: inline-block;` : '15px;'};
+    props.minWidth
+      ? `${props.minWidth}px; display: inline-block;text-align:left;`
+      : '15px;'};
 `;
 
 interface Props {
