@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import { useGlobalState } from '../../../context';
+
+const TimeText = styled.span`
+  margin: 0;
+  padding: 0;
+  min-width: 15px;
+`;
 
 interface Props {
   twelveHoursSys: boolean;
 }
 
 export function Time({ twelveHoursSys }: Props) {
-  // TODO: Faire ne sorte que le texte de l'heure soit plus lisible
-  // TODO: Faire en sorte que quand le temp < 10 affiche un 0 avant pour l'affichage 12h
-
   const [now, setDate] = useState(new Date());
   const [state] = useGlobalState();
 
@@ -37,6 +41,9 @@ export function Time({ twelveHoursSys }: Props) {
     };
   }, []);
 
+  // 12h/24h
+  let aMpM;
+
   // Date
   let date = now.getDate();
   let month = now.getMonth();
@@ -50,23 +57,25 @@ export function Time({ twelveHoursSys }: Props) {
   // TimeZone
   let timezone = new Date().getTimezoneOffset() / -60;
 
-  let currentTime;
   if (twelveHoursSys) {
-    let aMpM = hours >= 12 ? 'PM' : 'AM';
+    aMpM = hours >= 12 ? 'PM' : 'AM';
     hours = now.getHours() % 12;
     hours = hours ? hours : 12;
     if (hours < 10) {
       hours = `0${hours}`;
     }
-
-    currentTime = `${date} ${monthNames[month]} ${year} ${hours}:${minutes}:${seconds} ${aMpM}`;
-  } else {
-    currentTime = `${date} ${monthNames[month]} ${year} ${hours}:${minutes}:${seconds}`;
   }
 
-  if (state?.showTimeZone) {
-    currentTime += ` GMT+${timezone}`;
-  }
-
-  return <div>{currentTime}</div>;
+  return (
+    <div>
+      <TimeText>{date} </TimeText>
+      <TimeText>{monthNames[month]} </TimeText>
+      <TimeText>{year} </TimeText>
+      <TimeText>{hours}:</TimeText>
+      <TimeText>{minutes}:</TimeText>
+      <TimeText>{seconds} </TimeText>
+      {twelveHoursSys && <TimeText>{aMpM} </TimeText>}
+      {state?.showTimeZone && <TimeText>GMT+{timezone}</TimeText>}
+    </div>
+  );
 }
