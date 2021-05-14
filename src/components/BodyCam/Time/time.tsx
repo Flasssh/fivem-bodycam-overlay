@@ -3,10 +3,15 @@ import styled from 'styled-components';
 
 import { useGlobalState } from '../../../context';
 
-const TimeText = styled.span`
+type timeTextType = {
+  minWidth?: number;
+};
+
+const TimeText = styled.span<timeTextType>`
   margin: 0;
   padding: 0;
-  min-width: 15px;
+  width: ${(props) =>
+    props.minWidth ? `${props.minWidth}px; display: inline-block;` : '15px;'};
 `;
 
 interface Props {
@@ -73,7 +78,7 @@ export function Time({ twelveHoursSys }: Props) {
       <TimeText>{year} </TimeText>
       <TimeText>{hours}:</TimeText>
       <TimeText>{minutes}:</TimeText>
-      <TimeText>{seconds} </TimeText>
+      <TimeText minWidth={21}>{seconds} </TimeText>
       {twelveHoursSys && <TimeText>{aMpM} </TimeText>}
       {state?.showTimeZone && <TimeText>GMT+{timezone}</TimeText>}
     </div>
