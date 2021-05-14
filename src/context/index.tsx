@@ -53,7 +53,7 @@ let initialGlobalState = {
   policeDepartement: cookieData?.policeDepartement || 'LOS SANTOS POLICE DEPARTEMENT',
   size: cookieData?.size || 13,
   position: cookieData?.position || 'top-left',
-  textAlign: cookieData?.textAlign || 'right',
+  textAlign: cookieData?.textAlign || 'left',
   backgroundColor: cookieData?.backgroundColor || { r: 0, g: 0, b: 0, a: 0.2 },
 };
 
