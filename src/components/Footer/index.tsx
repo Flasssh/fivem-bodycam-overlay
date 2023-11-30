@@ -28,8 +28,8 @@ export function Footer() {
     <FooterContent>
       <FooterText>
         Made with <Hearth>♥</Hearth> in Switzerland, by <span> </span>
-        <FooterLink href="https://github.com/Flasssh" target="_blank" rel="noreferrer">
-          Flasssh
+        <FooterLink href="https://github.com/romainantunes" target="_blank" rel="noreferrer">
+          Romain Antunes
         </FooterLink>
       </FooterText>
     </FooterContent>
