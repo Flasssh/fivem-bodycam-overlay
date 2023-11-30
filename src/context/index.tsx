@@ -59,8 +59,9 @@ let initialGlobalState = {
 
 // @ts-ignore
 export const BodyCamContext = React.createContext<BodyCamContextType>(initialGlobalState);
-export const DispatchBodyCamContext =
-  React.createContext<BodyCamContextType | undefined>(undefined);
+export const DispatchBodyCamContext = React.createContext<BodyCamContextType | undefined>(
+  undefined,
+);
 
 // State, Dispatch
 interface Props {

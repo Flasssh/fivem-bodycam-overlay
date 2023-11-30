@@ -28,7 +28,10 @@ export function Footer() {
     <FooterContent>
       <FooterText>
         Made with <Hearth>♥</Hearth> in Switzerland, by <span> </span>
-        <FooterLink href="https://github.com/romainantunes" target="_blank" rel="noreferrer">
+        <FooterLink
+          href="https://github.com/romainantunes"
+          target="_blank"
+          rel="noreferrer">
           Romain Antunes
         </FooterLink>
       </FooterText>
